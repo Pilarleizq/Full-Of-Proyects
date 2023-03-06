@@ -140,12 +140,12 @@
 .info-autor {
     width: 40%;
     text-align: center;
-}
 
-.info-autor .image {
-    border-radius: 50%;
-    width: 80px;
-    height: 110px;
+    .image{
+        border-radius: 50%;
+        width: 80px;
+        height: 110px;
+    }
 }
 
 .info-autor .job {
