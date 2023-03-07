@@ -12,11 +12,14 @@ function App() {
   const [desc, setDesc] = useState('');
   const [autor, setAutor] = useState('');
   const [job, setJob] = useState('');
+  const [message, setMessage] = useState('');
   // const [photo, setPhoto] = useState('');
   // const [image, setImage] = useState('');
 
+  // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
+
+  const pattern = new RegExp("^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$");
   const handleInput = (ev) => {
-    ev.preventDefault();
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
     if (inputName === 'name') {
@@ -26,7 +29,11 @@ function App() {
     } else if (inputName === 'technologies') {
       setTechnologies(inputValue);
     } else if (inputName === 'repo') {
-      setRepo(inputValue);
+      if(pattern.test(inputValue)){
+        setRepo(inputValue); 
+      }else{
+        setMessage('Introduce un URL válida');
+      }
     } else if (inputName === 'demo') {
       setDemo(inputValue);
     } else if (inputName === 'desc') {
@@ -37,6 +44,9 @@ function App() {
       setJob(inputValue);
     }
   };
+  const handleSubmit = (ev) => {
+    ev.preventDefault();
+  }
 
   return (
     <div className="container">
@@ -73,115 +83,118 @@ function App() {
             </section>
           </section>
         </section>
-
         <section className="form">
-          <h2 className="title">Información</h2>
-
-          <section className="ask-info">
-            <p className="subtitle">Cuéntanos sobre el proyecto</p>
-            <hr className="line" />
-          </section>
-
-          <fieldset className="project">
-            <input
-              className="input"
-              type="text"
-              placeholder="Nombre del proyecto"
-              name="name"
-              id="name"
-              value={name}
-              onInput={handleInput}
-            />
-            <input
-              className="input"
-              type="text"
-              name="slogan"
-              id="slogan"
-              placeholder="Slogan"
-              value={slogan}
-              onInput={handleInput}
-            />
-            <input
-              className="input"
-              type="text"
-              name="repo"
-              id="repo"
-              placeholder="Repo"
-              value={repo}
-              onInput={handleInput}
-            />
-            <input
-              className="input"
-              type="text"
-              placeholder="Demo"
-              name="demo"
-              id="demo"
-              value={demo}
-              onInput={handleInput}
-            />
-            <input
-              className="input"
-              type="text"
-              placeholder="Tecnologías"
-              name="technologies"
-              id="technologies"
-              value={technologies}
-              onInput={handleInput}
-            />
-            <textarea
-              className="textarea"
-              type="text"
-              placeholder="Descripción"
-              name="desc"
-              id="desc"
-              value={desc}
-              onInput={handleInput}
-            ></textarea>
-          </fieldset>
-
-          <section className="ask-info">
-            <p className="subtitle">Cuéntanos sobre la autora</p>
-            <hr className="line" />
-          </section>
-
-          <fieldset className="autor">
-            <input
-              className="input"
-              type="text"
-              placeholder="Nombre"
-              name="autor"
-              id="autor"
-              value={autor}
-              onInput={handleInput}
-            />
-            <input
-              className="input"
-              type="text"
-              placeholder="Trabajo"
-              name="job"
-              id="job"
-              value={job}
-              onInput={handleInput}
-            />
-          </fieldset>
-
-          <section className="buttons-img">
-            <button className="btn">Subir foto de proyecto</button>
-            <button className="btn">Subir foto de autora</button>
-          </section>
-          <section className="buttons-img">
-            <button className="btn-large" onClick="{handleClickCreateCard}">
-              Crear Tarjeta
-            </button>
-          </section>
-
-          <section className="card">
-            <span className=""> La tarjeta ha sido creada: </span>
-            {/* aqui he peusto un 3 para que se vaya el error */}
-            <a href="3" className="" target="_blank" rel="noreferrer">
-              {' '}
-            </a>
-          </section>
+            <h2 className="title">Información</h2>
+            <form onSubmit={handleSubmit}>
+              <fieldset className="project">
+                <legend className="ask-info">
+                  <p className="subtitle">Cuéntanos sobre el proyecto</p>
+                  <hr className="line" />
+                </legend>
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Nombre del proyecto"
+                  name="name"
+                  id="name"
+                  minLength="2"
+                  required
+                  value={name}
+                  onInput={handleInput}
+                />
+                <input
+                  className="input"
+                  type="text"
+                  name="slogan"
+                  id="slogan"
+                  placeholder="Slogan"
+                  minLength="2"
+                  value={slogan}
+                  onInput={handleInput}
+                />
+                <input
+                  className="input"
+                  type="text"
+                  name="repo"
+                  id="repo"
+                  placeholder="Repo"
+                  required
+                  value={repo}
+                  onInput={handleInput}
+                />
+                <small className="input">{message}</small>
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Demo"
+                  name="demo"
+                  id="demo"
+                  value={demo}
+                  onInput={handleInput}
+                />
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Tecnologías"
+                  name="technologies"
+                  id="technologies"
+                  required
+                  value={technologies}
+                  onInput={handleInput}
+                />
+                <textarea
+                  className="textarea"
+                  type="text"
+                  placeholder="Descripción"
+                  name="desc"
+                  id="desc"
+                  value={desc}
+                  onInput={handleInput}
+                ></textarea>
+              </fieldset>
+              <fieldset className="autor">
+                <legend className="ask-info">
+                <p className="subtitle">Cuéntanos sobre la autora</p>
+                <hr className="line" />
+              </legend>
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Nombre"
+                  name="autor"
+                  id="autor"
+                  required
+                  value={autor}
+                  onInput={handleInput}
+                />
+                <input
+                  className="input"
+                  type="text"
+                  placeholder="Trabajo"
+                  name="job"
+                  id="job"
+                  value={job}
+                  onInput={handleInput}
+                />
+              </fieldset>
+              <section className="buttons-img">
+                <button className="btn">Subir foto de proyecto</button>
+                <button className="btn">Subir foto de autora</button>
+              </section>
+              <section className="buttons-img">
+                <button className="btn-large" onClick="{handleClickCreateCard}">
+                  Crear Tarjeta
+                </button>
+              </section>
+            <section className="card">
+              <span className=""> La tarjeta ha sido creada: </span>
+              {/* aqui he peusto un 3 para que se vaya el error */}
+              <a href="3" className="" target="_blank" rel="noreferrer">
+                {' '}
+              </a>
+            </section>
+          
+          </form>
         </section>
       </main>
     </div>
