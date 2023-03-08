@@ -1,5 +1,6 @@
 import '../styles/App.scss';
 import cover from '../images/cover.jpeg';
+import logo from '../images/logo-adalab.png';
 import user from '../images/user.jpeg';
 import { useState } from 'react';
 
@@ -18,7 +19,7 @@ function App() {
 
   // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
 
-  const pattern = new RegExp("^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$");
+  const pattern = new RegExp('^https?://[w-]+(.[w-]+)+[/#?]?.*$');
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
@@ -29,9 +30,9 @@ function App() {
     } else if (inputName === 'technologies') {
       setTechnologies(inputValue);
     } else if (inputName === 'repo') {
-      if(pattern.test(inputValue)){
-        setRepo(inputValue); 
-      }else{
+      if (pattern.test(inputValue)) {
+        setRepo(inputValue);
+      } else {
         setMessage('Introduce un URL válida');
       }
     } else if (inputName === 'demo') {
@@ -46,12 +47,15 @@ function App() {
   };
   const handleSubmit = (ev) => {
     ev.preventDefault();
-  }
+  };
 
   return (
     <div className="container">
       <header className="header">
         <p className="text">Proyectos Molones</p>
+        <a href="https://adalab.es" target="_blank">
+          <img src={logo} alt="" className="logo" />
+        </a>
       </header>
       <main className="main">
         <section className="preview">
@@ -84,108 +88,108 @@ function App() {
           </section>
         </section>
         <section className="form">
-            <h2 className="title">Información</h2>
-            <form onSubmit={handleSubmit}>
-              <fieldset className="project">
-                <legend className="ask-info">
-                  <p className="subtitle">Cuéntanos sobre el proyecto</p>
-                  <hr className="line" />
-                </legend>
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Nombre del proyecto"
-                  name="name"
-                  id="name"
-                  minLength="2"
-                  required
-                  value={name}
-                  onInput={handleInput}
-                />
-                <input
-                  className="input"
-                  type="text"
-                  name="slogan"
-                  id="slogan"
-                  placeholder="Slogan"
-                  minLength="2"
-                  value={slogan}
-                  onInput={handleInput}
-                />
-                <input
-                  className="input"
-                  type="text"
-                  name="repo"
-                  id="repo"
-                  placeholder="Repo"
-                  required
-                  value={repo}
-                  onInput={handleInput}
-                />
-                <small className="input">{message}</small>
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Demo"
-                  name="demo"
-                  id="demo"
-                  value={demo}
-                  onInput={handleInput}
-                />
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Tecnologías"
-                  name="technologies"
-                  id="technologies"
-                  required
-                  value={technologies}
-                  onInput={handleInput}
-                />
-                <textarea
-                  className="textarea"
-                  type="text"
-                  placeholder="Descripción"
-                  name="desc"
-                  id="desc"
-                  value={desc}
-                  onInput={handleInput}
-                ></textarea>
-              </fieldset>
-              <fieldset className="autor">
-                <legend className="ask-info">
+          <h2 className="title">Información</h2>
+          <form onSubmit={handleSubmit}>
+            <fieldset className="project">
+              <legend className="ask-info">
+                <p className="subtitle">Cuéntanos sobre el proyecto</p>
+                <hr className="line" />
+              </legend>
+              <input
+                className="input"
+                type="text"
+                placeholder="Nombre del proyecto"
+                name="name"
+                id="name"
+                minLength="2"
+                required
+                value={name}
+                onInput={handleInput}
+              />
+              <input
+                className="input"
+                type="text"
+                name="slogan"
+                id="slogan"
+                placeholder="Slogan"
+                minLength="2"
+                value={slogan}
+                onInput={handleInput}
+              />
+              <input
+                className="input"
+                type="text"
+                name="repo"
+                id="repo"
+                placeholder="Repo"
+                required
+                value={repo}
+                onInput={handleInput}
+              />
+              <input
+                className="input"
+                type="text"
+                placeholder="Demo"
+                name="demo"
+                id="demo"
+                value={demo}
+                onInput={handleInput}
+              />
+              <input
+                className="input"
+                type="text"
+                placeholder="Tecnologías"
+                name="technologies"
+                id="technologies"
+                required
+                value={technologies}
+                onInput={handleInput}
+              />
+              <textarea
+                className="textarea"
+                type="text"
+                placeholder="Descripción"
+                name="desc"
+                id="desc"
+                value={desc}
+                onInput={handleInput}
+              ></textarea>
+              <small className="message">{message}</small>
+            </fieldset>
+            <fieldset className="autor">
+              <legend className="ask-info">
                 <p className="subtitle">Cuéntanos sobre la autora</p>
                 <hr className="line" />
               </legend>
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Nombre"
-                  name="autor"
-                  id="autor"
-                  required
-                  value={autor}
-                  onInput={handleInput}
-                />
-                <input
-                  className="input"
-                  type="text"
-                  placeholder="Trabajo"
-                  name="job"
-                  id="job"
-                  value={job}
-                  onInput={handleInput}
-                />
-              </fieldset>
-              <section className="buttons-img">
-                <button className="btn">Subir foto de proyecto</button>
-                <button className="btn">Subir foto de autora</button>
-              </section>
-              <section className="buttons-img">
-                <button className="btn-large" onClick="{handleClickCreateCard}">
-                  Crear Tarjeta
-                </button>
-              </section>
+              <input
+                className="input"
+                type="text"
+                placeholder="Nombre"
+                name="autor"
+                id="autor"
+                required
+                value={autor}
+                onInput={handleInput}
+              />
+              <input
+                className="input"
+                type="text"
+                placeholder="Trabajo"
+                name="job"
+                id="job"
+                value={job}
+                onInput={handleInput}
+              />
+            </fieldset>
+            <section className="buttons-img">
+              <button className="btn">Subir foto de proyecto</button>
+              <button className="btn">Subir foto de autora</button>
+            </section>
+            <section className="buttons-img">
+              <button className="btn-large" onClick="{handleClickCreateCard}">
+                Crear Tarjeta
+              </button>
+            </section>
             <section className="card">
               <span className=""> La tarjeta ha sido creada: </span>
               {/* aqui he peusto un 3 para que se vaya el error */}
@@ -193,7 +197,6 @@ function App() {
                 {' '}
               </a>
             </section>
-          
           </form>
         </section>
       </main>
