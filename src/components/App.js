@@ -5,17 +5,20 @@ import user from '../images/user.jpeg';
 import { useState } from 'react';
 
 function App() {
-  const [name, setName] = useState('');
-  const [slogan, setSlogan] = useState('');
-  const [technologies, setTechnologies] = useState('');
-  const [repo, setRepo] = useState('');
-  const [demo, setDemo] = useState('');
-  const [desc, setDesc] = useState('');
-  const [autor, setAutor] = useState('');
-  const [job, setJob] = useState('');
   const [message, setMessage] = useState('');
   // const [photo, setPhoto] = useState('');
   // const [image, setImage] = useState('');
+
+  const [data, setData] = useState({
+    name: '',
+    slogan: '',
+    technologies: '',
+    repo: '',
+    demo: '',
+    desc: '',
+    autor: '',
+    job: '',
+  });
 
   // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
 
@@ -24,27 +27,28 @@ function App() {
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
     if (inputName === 'name') {
-      setName(inputValue);
+      setData({ ...data, name: inputValue });
     } else if (inputName === 'slogan') {
-      setSlogan(inputValue);
+      setData({ ...data, slogan: inputValue });
     } else if (inputName === 'technologies') {
-      setTechnologies(inputValue);
+      setData({ ...data, technologies: inputValue });
     } else if (inputName === 'repo') {
       if (pattern.test(inputValue)) {
-        setRepo(inputValue);
+        setData({ ...data, repo: inputValue });
       } else {
         setMessage('Introduce un URL válida');
       }
     } else if (inputName === 'demo') {
-      setDemo(inputValue);
+      setData({ ...data, demo: inputValue });
     } else if (inputName === 'desc') {
-      setDesc(inputValue);
+      setData({ ...data, desc: inputValue });
     } else if (inputName === 'autor') {
-      setAutor(inputValue);
+      setData({ ...data, autor: inputValue });
     } else if (inputName === 'job') {
-      setJob(inputValue);
+      setData({ ...data, job: inputValue });
     }
   };
+
   const handleSubmit = (ev) => {
     ev.preventDefault();
   };
@@ -53,7 +57,7 @@ function App() {
     <div className="container">
       <header className="header">
         <p className="text">Proyectos Molones</p>
-        <a href="https://adalab.es" target="_blank">
+        <a href="https://www.adalab.es" target="_blank">
           <img src={logo} alt="" className="logo" />
         </a>
       </header>
@@ -66,24 +70,26 @@ function App() {
               <p className="subtitle">Personal Project Card</p>
               <hr className="line" />
 
-              <h2 className="title">{name || 'Elegant Workspace'}</h2>
-              <p className="slogan">{slogan || 'Diseños Exclusivos'}</p>
+              <h2 className="title">{data.name || 'Elegant Workspace'}</h2>
+              <p className="slogan">{data.slogan || 'Diseños Exclusivos'}</p>
               <p className="desc">
-                {desc ||
+                {data.desc ||
                   `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                 Libero, delectus? Voluptates at hic aliquam porro ad suscipit
                 harum laboriosam saepe earum doloribus aperiam, ullam culpa
                 accusantium placeat odit corrupti ipsum!`}
               </p>
               <section className="technologies">
-                <p className="text">{technologies || 'React JS, MongoDB'}</p>
+                <p className="text">
+                  {data.technologies || 'React JS, MongoDB'}
+                </p>
               </section>
             </section>
 
             <section className="info-autor">
               <img className="image" src={user} alt="" />
-              <p className="job">{job || 'Full Stack Developer'}</p>
-              <p className="name">{autor || 'Emmelie Björklund'}</p>
+              <p className="job">{data.job || 'Full Stack Developer'}</p>
+              <p className="name">{data.autor || 'Emmelie Björklund'}</p>
             </section>
           </section>
         </section>
@@ -103,7 +109,7 @@ function App() {
                 id="name"
                 minLength="2"
                 required
-                value={name}
+                value={data.name}
                 onInput={handleInput}
               />
               <input
@@ -113,7 +119,7 @@ function App() {
                 id="slogan"
                 placeholder="Slogan"
                 minLength="2"
-                value={slogan}
+                value={data.slogan}
                 onInput={handleInput}
               />
               <input
@@ -123,7 +129,7 @@ function App() {
                 id="repo"
                 placeholder="Repo"
                 required
-                value={repo}
+                value={data.repo}
                 onInput={handleInput}
               />
               <input
@@ -132,7 +138,7 @@ function App() {
                 placeholder="Demo"
                 name="demo"
                 id="demo"
-                value={demo}
+                value={data.demo}
                 onInput={handleInput}
               />
               <input
@@ -142,7 +148,7 @@ function App() {
                 name="technologies"
                 id="technologies"
                 required
-                value={technologies}
+                value={data.technologies}
                 onInput={handleInput}
               />
               <textarea
@@ -151,7 +157,7 @@ function App() {
                 placeholder="Descripción"
                 name="desc"
                 id="desc"
-                value={desc}
+                value={data.desc}
                 onInput={handleInput}
               ></textarea>
               <small className="message">{message}</small>
@@ -168,7 +174,7 @@ function App() {
                 name="autor"
                 id="autor"
                 required
-                value={autor}
+                value={data.autor}
                 onInput={handleInput}
               />
               <input
@@ -177,7 +183,7 @@ function App() {
                 placeholder="Trabajo"
                 name="job"
                 id="job"
-                value={job}
+                value={data.job}
                 onInput={handleInput}
               />
             </fieldset>
