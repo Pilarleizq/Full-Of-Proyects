@@ -3,6 +3,7 @@ import cover from '../images/cover.jpeg';
 import logo from '../images/logo-adalab.png';
 import user from '../images/user.jpeg';
 import { useState } from 'react';
+import dataApi from '../service/api';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -18,7 +19,13 @@ function App() {
     desc: '',
     autor: '',
     job: '',
+    image:
+      'https://thumbs.dreamstime.com/b/arbustos-violetas-de-la-lavanda-campos-p%C3%BArpuras-los-colores-hermosos-116489097.jpg',
+    photo:
+      'https://thumbs.dreamstime.com/b/arbustos-violetas-de-la-lavanda-campos-p%C3%BArpuras-los-colores-hermosos-116489097.jpg',
   });
+
+  const [infoURL, setinfoURL] = useState('');
 
   // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
 
@@ -26,7 +33,17 @@ function App() {
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
-    if (inputName === 'name') {
+    if (inputName === 'repo') {
+      if (pattern.test(inputValue)) {
+        setData({ ...data, repo: inputValue });
+      } else {
+        setMessage('Introduce un URL válida');
+      }
+    } else {
+      setData({ ...data, [inputName]: inputValue });
+    }
+  };
+  /*    if (inputName === 'name') {
       setData({ ...data, name: inputValue });
     } else if (inputName === 'slogan') {
       setData({ ...data, slogan: inputValue });
@@ -46,7 +63,13 @@ function App() {
       setData({ ...data, autor: inputValue });
     } else if (inputName === 'job') {
       setData({ ...data, job: inputValue });
-    }
+    } */
+  const handleClickCreateCard = (ev) => {
+    ev.preventDefault();
+    dataApi(data).then((info) => {
+      console.log(info);
+      setinfoURL(info.cardURL);
+    });
   };
 
   const handleSubmit = (ev) => {
@@ -192,15 +215,15 @@ function App() {
               <button className="btn">Subir foto de autora</button>
             </section>
             <section className="buttons-img">
-              <button className="btn-large" onClick="{handleClickCreateCard}">
+              <button className="btn-large" onClick={handleClickCreateCard}>
                 Crear Tarjeta
               </button>
             </section>
             <section className="card">
               <span className=""> La tarjeta ha sido creada: </span>
               {/* aqui he peusto un 3 para que se vaya el error */}
-              <a href="3" className="" target="_blank" rel="noreferrer">
-                {' '}
+              <a href={infoURL} className="" target="_blank" rel="noreferrer">
+                {infoURL}
               </a>
             </section>
           </form>
