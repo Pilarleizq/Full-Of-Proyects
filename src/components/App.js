@@ -220,9 +220,9 @@ function App() {
               </button>
             </section>
             <section className="card">
-              <span className=""> La tarjeta ha sido creada: </span>
+              <span className="create"> La tarjeta ha sido creada: </span>
               {/* aqui he peusto un 3 para que se vaya el error */}
-              <a href={infoURL} className="" target="blank" rel="noreferrer">
+              <a href={infoURL} className="url" target="blank" rel="noreferrer">
                 {infoURL}
               </a>
             </section>
