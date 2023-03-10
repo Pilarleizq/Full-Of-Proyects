@@ -80,7 +80,7 @@ function App() {
     <div className="container">
       <header className="header">
         <p className="text">Proyectos Molones</p>
-        <a href="https://www.adalab.es" target="_blank">
+        <a href="https://www.adalab.es" target="blank">
           <img src={logo} alt="" className="logo" />
         </a>
       </header>
@@ -222,7 +222,7 @@ function App() {
             <section className="card">
               <span className=""> La tarjeta ha sido creada: </span>
               {/* aqui he peusto un 3 para que se vaya el error */}
-              <a href={infoURL} className="" target="_blank" rel="noreferrer">
+              <a href={infoURL} className="" target="blank" rel="noreferrer">
                 {infoURL}
               </a>
             </section>
