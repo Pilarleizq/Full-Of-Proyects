@@ -29,15 +29,17 @@ function App() {
 
   const [isCreatedCard, setIsCreatedCard] = useState(false);
 
+  const [isCompletedForm, setCompletedForm] = useState(false);
+
   // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
 
   const pattern = new RegExp('^https?://[w-]+(.[w-]+)+[/#?]?.*$');
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
-    if (inputName === 'repo') {
+    if (inputName === 'repo' || inputName === 'demo') {
       if (pattern.test(inputValue)) {
-        setData({ ...data, repo: inputValue });
+        setData({ ...data, [inputName]: inputValue });
       } else {
         setMessage('Introduce un URL válida');
       }
@@ -70,8 +72,14 @@ function App() {
     ev.preventDefault();
     dataApi(data).then((info) => {
       console.log(info);
-      setIsCreatedCard(true);
-      setinfoURL(info.cardURL);
+      if (info.success) {
+        setCompletedForm(true);
+        setIsCreatedCard(true);
+        setinfoURL(info.cardURL);
+      } else {
+        setIsCreatedCard(true);
+        setCompletedForm(false);
+      }
     });
   };
 
@@ -145,6 +153,7 @@ function App() {
                 id="slogan"
                 placeholder="Slogan"
                 minLength="2"
+                required
                 value={data.slogan}
                 onInput={handleInput}
               />
@@ -164,6 +173,7 @@ function App() {
                 placeholder="Demo (copia y pega la url directamente)"
                 name="demo"
                 id="demo"
+                required
                 value={data.demo}
                 onInput={handleInput}
               />
@@ -183,6 +193,7 @@ function App() {
                 placeholder="Descripción"
                 name="desc"
                 id="desc"
+                required
                 value={data.desc}
                 onInput={handleInput}
                 maxLength="500ch"
@@ -210,6 +221,7 @@ function App() {
                 placeholder="Trabajo"
                 name="job"
                 id="job"
+                required
                 value={data.job}
                 onInput={handleInput}
               />
@@ -224,7 +236,11 @@ function App() {
               </button>
             </section>
             <section className={`card ${isCreatedCard ? '' : 'hidden'}`}>
-              <span className="create"> La tarjeta ha sido creada: </span>
+              <span className="create">
+                {isCompletedForm
+                  ? 'La tarjeta ha sido creada:'
+                  : 'Faltan campos por rellenar'}
+              </span>
               <a href={infoURL} className="url" target="blank" rel="noreferrer">
                 {infoURL}
               </a>
