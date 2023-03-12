@@ -27,6 +27,8 @@ function App() {
 
   const [infoURL, setinfoURL] = useState('');
 
+  const [isCreatedCard, setIsCreatedCard] = useState(false);
+
   // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
 
   const pattern = new RegExp('^https?://[w-]+(.[w-]+)+[/#?]?.*$');
@@ -68,6 +70,7 @@ function App() {
     ev.preventDefault();
     dataApi(data).then((info) => {
       console.log(info);
+      setIsCreatedCard(true);
       setinfoURL(info.cardURL);
     });
   };
@@ -150,7 +153,7 @@ function App() {
                 type="text"
                 name="repo"
                 id="repo"
-                placeholder="Repo"
+                placeholder="Repo (copia y pega la url directamente)"
                 required
                 value={data.repo}
                 onInput={handleInput}
@@ -158,7 +161,7 @@ function App() {
               <input
                 className="input"
                 type="text"
-                placeholder="Demo"
+                placeholder="Demo (copia y pega la url directamente)"
                 name="demo"
                 id="demo"
                 value={data.demo}
@@ -182,6 +185,7 @@ function App() {
                 id="desc"
                 value={data.desc}
                 onInput={handleInput}
+                maxLength="500ch"
               ></textarea>
               <small className="message">{message}</small>
             </fieldset>
@@ -219,9 +223,8 @@ function App() {
                 Crear Tarjeta
               </button>
             </section>
-            <section className="card">
+            <section className={`card ${isCreatedCard ? '' : 'hidden'}`}>
               <span className="create"> La tarjeta ha sido creada: </span>
-              {/* aqui he peusto un 3 para que se vaya el error */}
               <a href={infoURL} className="url" target="blank" rel="noreferrer">
                 {infoURL}
               </a>

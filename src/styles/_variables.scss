@@ -9,11 +9,10 @@
 .container {
     background-color: #302c42;
     min-height: 100vh;
-    padding: 10px 30px 30px 30px;
-    display: grid;
-    grid-template-rows: 100px 1fr;
+    padding: 20px 30px 30px 30px;
 
     @media all and (min-width: 768px) {
+        display: grid;
         padding: 10px 20px 20px 20px;
         grid-template-rows: 80px 1fr;
     }
@@ -34,6 +33,10 @@
         color: white;
         font-size: 34px;
         font-family: 'Lobster', cursive;
+
+        @media all and (min-width: 768px) {
+            font-size: 30px;
+        }
     }
 
     .logo {
@@ -60,8 +63,9 @@
     }
 
     .preview {
-
+        margin-top: 20px;
         @media all and (min-width: 768px) {
+            margin-top: 0;
             width: 60%;
             padding: 0 20px;
         }
@@ -82,7 +86,6 @@
             background-color: white;
             color: #3e3e3e;
             width: 90%;
-            //height: 50%;
             transform: translateY(-75px);
             margin: auto;
             border-radius: 20px;
@@ -91,13 +94,14 @@
             align-items: center;
             gap: 15px;
             padding: 10px;
-            max-height: 300px;
+            min-height: 245px;
+            max-height: 350px;
 
             @media all and (min-width: 768px) {
                 transform: translateY(-100px);
                 padding: 20px;
                 gap: 20px;
-                max-height: 320px;
+                max-height: 340px;
                 max-width: 550px;
             }
 
@@ -142,9 +146,8 @@
 
                 .subtitle {
                     font-size: 12px;
-                    background-color: #ffffff;
                     text-align: center;
-                    margin-bottom: 10px;
+                    // margin-bottom: 10px;
 
                     @media all and (min-width: 768px) {
                         font-size: 16px;
@@ -154,7 +157,7 @@
                 .title {
                     
                     font-size: 16px;
-                    color: rgb(255, 255, 255);
+                    color: black;
                     margin-bottom: 10px;
                     
 
@@ -203,7 +206,7 @@
     .form {
         background-color: #211e2e;
         padding: 25px 30px;
-        margin-top: 115px;
+        margin-top: 10px;
         width: 100%;
 
         @media all and (min-width: 768px) {
@@ -247,7 +250,7 @@
         background-color: transparent;
         border-color: white;
         border-radius: 40px;
-        height: 42.72px;
+        height: 40px;
         color: #ffffff;
         padding-left: 15px;
     }
@@ -258,6 +261,7 @@
     }
 
     .textarea {
+        border-radius: 25px;
         height: 110px;
         padding-top: 17px;
     }
@@ -294,6 +298,8 @@
         border: solid 2px white;
         box-shadow: 2px 5px 2px rgb(0, 0, 0);
     }
+
+    
 }
 
 .btn-color {
@@ -316,6 +322,11 @@
     padding: 20px;
     height: 150px;
     justify-content: space-between;
+
+    .url {
+        color: #c0b7e8;
+        word-wrap: break-word;
+    }
 }
 
 .hidden {
@@ -328,8 +339,3 @@
     font-size: 20px;
 }
 
-.url {
-    padding: 10px;
-    color:#c0b7e8;
-    background-color: #4d4769;
-}
