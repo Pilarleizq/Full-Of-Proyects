@@ -5,6 +5,8 @@ import user from '../images/user.jpeg';
 import { useEffect, useState } from 'react';
 import dataApi from '../service/api';
 import ls from '../service/localStorage';
+import GetAvatar from './GetAvatar';
+import Profile from './Profile';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -12,18 +14,16 @@ function App() {
   // const [image, setImage] = useState('');
 
   const [data, setData] = useState({
-    name: ls.get('dataInputs', {}).name || '',
-    slogan: ls.get('dataInputs', {}).slogan || '',
-    technologies: ls.get('dataInputs', {}).technologies || '',
-    repo: ls.get('dataInputs', {}).repo || '',
-    demo: ls.get('dataInputs', {}).demo || '',
-    desc: ls.get('dataInputs', {}).desc || '',
-    autor: ls.get('dataInputs', {}).autor || '',
-    job: ls.get('dataInputs', {}).job || '',
-    image:
-      'https://thumbs.dreamstime.com/b/arbustos-violetas-de-la-lavanda-campos-p%C3%BArpuras-los-colores-hermosos-116489097.jpg',
-    photo:
-      'https://thumbs.dreamstime.com/b/arbustos-violetas-de-la-lavanda-campos-p%C3%BArpuras-los-colores-hermosos-116489097.jpg',
+    name: ls.get('dataLS', {}).name || '',
+    slogan: ls.get('dataLS', {}).slogan || '',
+    technologies: ls.get('dataLS', {}).technologies || '',
+    repo: ls.get('dataLS', {}).repo || '',
+    demo: ls.get('dataLS', {}).demo || '',
+    desc: ls.get('dataLS', {}).desc || '',
+    autor: ls.get('dataLS', {}).autor || '',
+    job: ls.get('dataLS', {}).job || '',
+    image: ls.get('dataLS', {}).image || '',
+    photo: ls.get('dataLS', {}).photo || '',
   });
 
   const [infoURL, setinfoURL] = useState('');
@@ -32,14 +32,21 @@ function App() {
 
   const [isCompletedForm, setCompletedForm] = useState(false);
 
-
   // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
 
   useEffect(() => {
-    ls.set('dataInputs', data)
+    ls.set('dataLS', data);
   }, [data]);
 
+  const updateImages = (avatar) => {
+    setData({ ...data, image: avatar });
+  };
+  const updatePhoto = (avatar) => {
+    setData({ ...data, photo: avatar });
+  };
+
   const pattern = new RegExp('^https?://[w-]+(.[w-]+)+[/#?]?.*$');
+
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
@@ -103,7 +110,8 @@ function App() {
       </header>
       <main className="main">
         <section className="preview">
-          <img className="image" src={cover} alt="" />
+          {/* <img className="image" src={cover} alt="" /> */}
+          <Profile defaultAvatar={cover} avatar={data.image} />
 
           <section className="autor">
             <section className="info-project">
@@ -127,7 +135,8 @@ function App() {
             </section>
 
             <section className="info-autor">
-              <img className="image" src={user} alt="" />
+              {/* <img className="image" src={user} alt="" /> */}
+              <Profile defaultAvatar={user} avatar={data.photo} />
               <p className="job">{data.job || 'Full Stack Developer'}</p>
               <p className="name">{data.autor || 'Emmelie Björklund'}</p>
             </section>
@@ -171,7 +180,7 @@ function App() {
                 placeholder="Repo (copia y pega la url directamente)"
                 required
                 value={data.repo}
-                onChange={handleInput}
+                onInput={handleInput}
               />
               <input
                 className="input"
@@ -233,8 +242,23 @@ function App() {
               />
             </fieldset>
             <section className="buttons-img">
-              <button className="btn">Subir foto de proyecto</button>
-              <button className="btn">Subir foto de autora</button>
+              <GetAvatar
+                className={'btn'}
+                updateAvatar={updatePhoto}
+                value={'Subir foto de autora'}
+              />
+              <GetAvatar
+                className={'btn'}
+                updateAvatar={updateImages}
+                value={'Subir foto de proyecto'}
+              />
+
+              {/* <button className="btn"
+                Subir foto de proyecto
+              </button>
+              <button className="btn">
+                Subir foto de autora
+              </button> */}
             </section>
             <section className="buttons-img">
               <button className="btn-large" onClick={handleClickCreateCard}>

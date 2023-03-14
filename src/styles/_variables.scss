@@ -111,12 +111,12 @@
 
                 .image {
                     object-fit: cover;
-                    border-radius: 50%;
+                    border-radius: 5%;
                     width: 95px;
                     height: 110px;
 
                     @media all and (min-width: 768px) {
-                        width: 100px;
+                        width: 150px;
                         height: 150px;
                     }
                 }
@@ -282,6 +282,7 @@
 
     .btn,
     .btn-large {
+        padding: 5px 15px 0 15px;
         width: 160px;
         margin-top: 10px;
         color: white;
@@ -291,6 +292,11 @@
         height: 43px;
         background: linear-gradient(90deg, #8176af -1.57%, #c0b7e8 98.43%);
         border-radius: 40px;
+        
+
+        .label{
+            font-size: 15px;
+        }
     }
 
     .btn-large {
@@ -298,6 +304,7 @@
         border: solid 2px white;
         box-shadow: 2px 5px 2px rgb(0, 0, 0);
     }
+    
 
     
 }
