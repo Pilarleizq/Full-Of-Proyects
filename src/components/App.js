@@ -2,8 +2,9 @@ import '../styles/App.scss';
 import cover from '../images/cover.jpeg';
 import logo from '../images/logo-adalab.png';
 import user from '../images/user.jpeg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import dataApi from '../service/api';
+import ls from '../service/localStorage';
 
 function App() {
   const [message, setMessage] = useState('');
@@ -11,14 +12,14 @@ function App() {
   // const [image, setImage] = useState('');
 
   const [data, setData] = useState({
-    name: '',
-    slogan: '',
-    technologies: '',
-    repo: '',
-    demo: '',
-    desc: '',
-    autor: '',
-    job: '',
+    name: ls.get('dataInputs', {}).name || '',
+    slogan: ls.get('dataInputs', {}).slogan || '',
+    technologies: ls.get('dataInputs', {}).technologies || '',
+    repo: ls.get('dataInputs', {}).repo || '',
+    demo: ls.get('dataInputs', {}).demo || '',
+    desc: ls.get('dataInputs', {}).desc || '',
+    autor: ls.get('dataInputs', {}).autor || '',
+    job: ls.get('dataInputs', {}).job || '',
     image:
       'https://thumbs.dreamstime.com/b/arbustos-violetas-de-la-lavanda-campos-p%C3%BArpuras-los-colores-hermosos-116489097.jpg',
     photo:
@@ -31,7 +32,12 @@ function App() {
 
   const [isCompletedForm, setCompletedForm] = useState(false);
 
+
   // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
+
+  useEffect(() => {
+    ls.set('dataInputs', data)
+  }, [data]);
 
   const pattern = new RegExp('^https?://[w-]+(.[w-]+)+[/#?]?.*$');
   const handleInput = (ev) => {
@@ -165,7 +171,7 @@ function App() {
                 placeholder="Repo (copia y pega la url directamente)"
                 required
                 value={data.repo}
-                onInput={handleInput}
+                onChange={handleInput}
               />
               <input
                 className="input"
