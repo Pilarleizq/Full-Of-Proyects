@@ -151,7 +151,7 @@ function App() {
                 <hr className="line" />
               </legend>
              
-              <label className="project-name"> Nombre del proyecto:
+              <label className="label-form"> Nombre del proyecto:
               <input
                 className="input"
                 type="text"
@@ -165,7 +165,7 @@ function App() {
               />
               </label>
              
-             <label className='label-slogan'>
+             <label className='label-form'>
               Slogan:
               <input
                 className="input"
@@ -180,7 +180,7 @@ function App() {
               />
               </label>
 
-              <label className='repo' > Repo:
+              <label className='label-form' > Repo:
               <input
                 className="input"
                 type="text"
@@ -193,7 +193,7 @@ function App() {
               />
               </label>
 
-              <label className='demo'>Demo:
+              <label className='label-form'>Demo:
               <input
                 className="input"
                 type="text"
@@ -206,7 +206,7 @@ function App() {
               />
               </label>
 
-              <label className='technologies'>Tecnologías:
+              <label className='label-form'>Tecnologías:
               <input
                 className="input"
                 type="text"
@@ -219,7 +219,7 @@ function App() {
               />
               </label>
 
-              <label className='descripcion'>Descripción:
+              <label className='label-form'>Descripción:
               <textarea
                 className="textarea"
                 type="text"
@@ -239,7 +239,7 @@ function App() {
                 <p className="subtitle">Cuéntanos sobre la autora</p>
                 <hr className="line" />
               </legend>
-              <label className='author'> Nombre:
+              <label className='label-form'> Nombre:
               <input
                 className="input"
                 type="text"
@@ -251,7 +251,7 @@ function App() {
                 onInput={handleInput}
               />
               </label>
-              <label className="label-job">Trabajo:
+              <label className="label-form">Trabajo:
               <input
                 className="input"
                 type="text"
