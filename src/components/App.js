@@ -150,6 +150,8 @@ function App() {
                 <p className="subtitle">Cuéntanos sobre el proyecto</p>
                 <hr className="line" />
               </legend>
+             
+              <label className="project-name"> Nombre del proyecto:
               <input
                 className="input"
                 type="text"
@@ -161,6 +163,10 @@ function App() {
                 value={data.name}
                 onInput={handleInput}
               />
+              </label>
+             
+             <label className='label-slogan'>
+              Slogan:
               <input
                 className="input"
                 type="text"
@@ -172,6 +178,9 @@ function App() {
                 value={data.slogan}
                 onInput={handleInput}
               />
+              </label>
+
+              <label className='repo' > Repo:
               <input
                 className="input"
                 type="text"
@@ -182,6 +191,9 @@ function App() {
                 value={data.repo}
                 onInput={handleInput}
               />
+              </label>
+
+              <label className='demo'>Demo:
               <input
                 className="input"
                 type="text"
@@ -192,6 +204,9 @@ function App() {
                 value={data.demo}
                 onInput={handleInput}
               />
+              </label>
+
+              <label className='technologies'>Tecnologías:
               <input
                 className="input"
                 type="text"
@@ -202,6 +217,9 @@ function App() {
                 value={data.technologies}
                 onInput={handleInput}
               />
+              </label>
+
+              <label className='descripcion'>Descripción:
               <textarea
                 className="textarea"
                 type="text"
@@ -213,6 +231,7 @@ function App() {
                 onInput={handleInput}
                 maxLength="500ch"
               ></textarea>
+              </label>
               <small className="message">{message}</small>
             </fieldset>
             <fieldset className="autor">
@@ -220,6 +239,7 @@ function App() {
                 <p className="subtitle">Cuéntanos sobre la autora</p>
                 <hr className="line" />
               </legend>
+              <label className='author'> Nombre:
               <input
                 className="input"
                 type="text"
@@ -230,6 +250,8 @@ function App() {
                 value={data.autor}
                 onInput={handleInput}
               />
+              </label>
+              <label className="label-job">Trabajo:
               <input
                 className="input"
                 type="text"
@@ -240,6 +262,7 @@ function App() {
                 value={data.job}
                 onInput={handleInput}
               />
+              </label>
             </fieldset>
             <section className="buttons-img">
               <GetAvatar
@@ -262,7 +285,7 @@ function App() {
             </section>
             <section className="buttons-img">
               <button className="btn-large" onClick={handleClickCreateCard}>
-                Crear Tarjeta
+                CREAR TARJETA
               </button>
             </section>
             <section className={`card ${isCreatedCard ? '' : 'hidden'}`}>
