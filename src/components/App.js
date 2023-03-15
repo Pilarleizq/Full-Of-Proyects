@@ -57,7 +57,7 @@ function App() {
       setData({ ...data, [inputName]: inputValue });
     }
   };
-  
+
   const handleClickCreateCard = (ev) => {
     ev.preventDefault();
     dataApi(data).then((info) => {
@@ -73,13 +73,22 @@ function App() {
     });
   };
 
-
   return (
     <div className="container">
       <Header logo={logo}></Header>
       <main className="main">
         <Preview data={data}></Preview>
-        <Form></Form>
+        <Form
+          message={message}
+          data={data}
+          infoURL={infoURL}
+          isCreatedCard={isCreatedCard}
+          isCompletedForm={isCompletedForm}
+          updateImages={updateImages}
+          updatePhoto={updatePhoto}
+          handleInput={handleInput}
+          handleClickCreateCard={handleClickCreateCard}
+        ></Form>
       </main>
     </div>
   );
