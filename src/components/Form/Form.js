@@ -1,6 +1,9 @@
 import GetAvatar from './GetAvatar';
 import FieldsetProject from './FieldsetProject';
 import FieldsetAuthor from './FieldsetAuthor';
+import BtnCreateCard from './BtnCreateCard';
+import MessageURL from './MessageURL';
+
 const Form = ({
   data,
   message,
@@ -38,29 +41,18 @@ const Form = ({
             updateAvatar={updateImages}
             value={'Subir foto de proyecto'}
           />
-
-          {/* <button className="btn"
-        Subir foto de proyecto
-        </button>
-        <button className="btn">
-        Subir foto de autora
-        </button> */}
         </section>
         <section className="buttons-img">
-          <button className="btn-large" onClick={handleClickCreateCard}>
-            CREAR TARJETA
-          </button>
+          <BtnCreateCard
+            handleClickCreateCard={handleClickCreateCard}
+            value={'CREAR TARJETA'}
+          />
         </section>
-        <section className={`card ${isCreatedCard ? '' : 'hidden'}`}>
-          <span className="create">
-            {isCompletedForm
-              ? 'La tarjeta ha sido creada:'
-              : 'Faltan campos por rellenar'}
-          </span>
-          <a href={infoURL} className="url" target="blank" rel="noreferrer">
-            {infoURL}
-          </a>
-        </section>
+        <MessageURL
+          isCreatedCard={isCreatedCard}
+          isCompletedForm={isCompletedForm}
+          infoURL={infoURL}
+        />
       </form>
     </section>
   );
