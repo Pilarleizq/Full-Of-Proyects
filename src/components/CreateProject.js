@@ -6,21 +6,36 @@ import Header from './Header';
 import Preview from './Preview/Preview';
 import Form from './Form/Form';
 
-function CreateProject() {
+function CreateProject({ dataCardList, setDataCardList }) {
   const [message, setMessage] = useState('');
 
-  const [data, setData] = useState({
-    name: ls.get('dataLS', {}).name || '',
-    slogan: ls.get('dataLS', {}).slogan || '',
-    technologies: ls.get('dataLS', {}).technologies || '',
-    repo: ls.get('dataLS', {}).repo || '',
-    demo: ls.get('dataLS', {}).demo || '',
-    desc: ls.get('dataLS', {}).desc || '',
-    autor: ls.get('dataLS', {}).autor || '',
-    job: ls.get('dataLS', {}).job || '',
-    image: ls.get('dataLS', {}).image || '',
-    photo: ls.get('dataLS', {}).photo || '',
-  });
+  // const [data, setData] = useState({
+  //   name: ls.get('dataLS', {}).name || '',
+  //   slogan: ls.get('dataLS', {}).slogan || '',
+  //   technologies: ls.get('dataLS', {}).technologies || '',
+  //   repo: ls.get('dataLS', {}).repo || '',
+  //   demo: ls.get('dataLS', {}).demo || '',
+  //   desc: ls.get('dataLS', {}).desc || '',
+  //   autor: ls.get('dataLS', {}).autor || '',
+  //   job: ls.get('dataLS', {}).job || '',
+  //   image: ls.get('dataLS', {}).image || '',
+  //   photo: ls.get('dataLS', {}).photo || '',
+  // });
+
+  const defaultData = {
+    name: '',
+    slogan: '',
+    technologies: '',
+    repo: '',
+    demo: '',
+    desc: '',
+    autor: '',
+    job: '',
+    image: '',
+    photo: '',
+  };
+
+  const [data, setData] = useState(ls.get('dataLS', defaultData));
 
   const [infoURL, setinfoURL] = useState('');
 
@@ -33,6 +48,10 @@ function CreateProject() {
   useEffect(() => {
     ls.set('dataLS', data);
   }, [data]);
+
+  useEffect(() => {
+    ls.set('dataCardLS', dataCardList);
+  }, [dataCardList]);
 
   const updateImages = (avatar) => {
     setData({ ...data, image: avatar });
@@ -68,6 +87,8 @@ function CreateProject() {
       } else {
         setIsCreatedCard(true);
         setCompletedForm(false);
+        dataCardList.push(data);
+        setDataCardList([...dataCardList]);
       }
     });
   };
