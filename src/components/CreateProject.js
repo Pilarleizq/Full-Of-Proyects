@@ -60,7 +60,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
     setData({ ...data, photo: avatar });
   };
 
-  const pattern = new RegExp('^https?://[w-]+(.[w-]+)+[/#?]?.*$');
+  const pattern = new RegExp('^https?://[/#?]?.*$');
 
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
