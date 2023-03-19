@@ -1,4 +1,4 @@
-import user from '../../images/user.jpeg';
+import user from '../../images/icono.png';
 import Profile from './Profile';
 
 const Card = ({ data }) => {
