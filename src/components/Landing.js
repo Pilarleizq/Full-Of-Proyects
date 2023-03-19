@@ -7,9 +7,9 @@ import '../styles/App.scss';
 const Landing = () => {
   const dataCardLS = ls.get('dataCardLS', []);
   const renderCard = () => {
-    return dataCardLS.map((obj) => {
+    return dataCardLS.map((obj, index) => {
       return (
-        <li className="landing-card">
+        <li key={index} className="landing-card">
           <section className="project-info">
             <p className="project-subtitle">Personal Project Card</p>
             <hr className="landing-card-line" />
@@ -40,9 +40,13 @@ const Landing = () => {
     <div className="container">
       <Header logo={logo} linkTo={''} />
       <main>
-        <section>
-          <Link className="link landing-btn-create" to="/create">
-            Crea tu tarjeta de proyecto
+        <h1 className="landing-title">Proyectos Molones</h1>
+        <h2 className="landing-subtitle">
+          Escaparate en línea para recoger ideas a través de la tecnología
+        </h2>
+        <section className="buttons-img">
+          <Link className="link btn-large" to="/create">
+            Nuevo proyecto
           </Link>
         </section>
         <ul className="landing-ul">{renderCard()}</ul>

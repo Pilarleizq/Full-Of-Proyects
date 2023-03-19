@@ -87,7 +87,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
       } else {
         setIsCreatedCard(true);
         setCompletedForm(false);
-        dataCardList.push(data);
+        dataCardList.unshift(data);
         setDataCardList([...dataCardList]);
         setData(defaultData);
       }

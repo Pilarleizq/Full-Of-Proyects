@@ -292,6 +292,11 @@
 .error-message {
     color: #ffffff;
     padding-left: 15px;
+    display:none;
+}
+
+.error-message-display{
+    display:block;
 }
 
 .buttons-img {
@@ -363,9 +368,23 @@
 }
 
 .landing {
-    &-btn-create {
-        color: white;
-        font-size: 20px;
+    // &-btn-create {
+    //     color: white;
+    //     font-size: 20px;
+    // }
+
+    &-title {
+        color: #ffffff;
+        text-align: center;
+        margin: 10px;
+
+    }
+
+    &-subtitle {
+        color: #ffffff;
+        text-align: center;
+        font-size: 18px;
+        font-weight: lighter;
     }
 
     &-ul {
