@@ -5,7 +5,7 @@ import ls from '../service/localStorage';
 import '../styles/App.scss';
 
 const Landing = () => {
-  const dataCardLS = ls.get('dataCardLS', {});
+  const dataCardLS = ls.get('dataCardLS', []);
   const renderCard = () => {
     return dataCardLS.map((obj) => {
       return (

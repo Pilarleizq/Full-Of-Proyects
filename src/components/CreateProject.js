@@ -89,6 +89,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
         setCompletedForm(false);
         dataCardList.push(data);
         setDataCardList([...dataCardList]);
+        setData(defaultData);
       }
     });
   };
