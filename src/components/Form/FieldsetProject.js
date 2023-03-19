@@ -1,12 +1,12 @@
 const FieldsetProject = ({ data, handleInput, message }) => {
   return (
-    <fieldset className="project">
-      <legend className="ask-info">
-        <p className="subtitle">Cuéntanos sobre el proyecto</p>
-        <hr className="line" />
+    <fieldset className="project-fieldset">
+      <legend className="legend">
+        <p className="legend-text">Cuéntanos sobre el proyecto</p>
+        <hr className="legend-line" />
       </legend>
 
-      <label className="label-form">
+      <label className="form-label">
         {' '}
         Nombre del proyecto:
         <input
@@ -22,7 +22,7 @@ const FieldsetProject = ({ data, handleInput, message }) => {
         />
       </label>
 
-      <label className="label-form">
+      <label className="form-label">
         Slogan:
         <input
           className="input"
@@ -37,7 +37,7 @@ const FieldsetProject = ({ data, handleInput, message }) => {
         />
       </label>
 
-      <label className="label-form">
+      <label className="form-label">
         {' '}
         Repo:
         <input
@@ -52,7 +52,7 @@ const FieldsetProject = ({ data, handleInput, message }) => {
         />
       </label>
 
-      <label className="label-form">
+      <label className="form-label">
         Demo:
         <input
           className="input"
@@ -66,7 +66,7 @@ const FieldsetProject = ({ data, handleInput, message }) => {
         />
       </label>
 
-      <label className="label-form">
+      <label className="form-label">
         Tecnologías:
         <input
           className="input"
@@ -80,7 +80,7 @@ const FieldsetProject = ({ data, handleInput, message }) => {
         />
       </label>
 
-      <label className="label-form">
+      <label className="form-label">
         Descripción:
         <textarea
           className="textarea"
@@ -94,7 +94,7 @@ const FieldsetProject = ({ data, handleInput, message }) => {
           maxLength="500ch"
         ></textarea>
       </label>
-      <small className="message">{message}</small>
+      <small className="error-message">{message}</small>
     </fieldset>
   );
 };

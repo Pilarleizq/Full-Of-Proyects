@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 const Header = ({ logo, linkTo }) => {
   return (
     <header className="header">
-      <Link className="link text" to={linkTo}>
+      <Link className="link header-title" to={linkTo}>
         Proyectos Molones
       </Link>
       {/* <p className="text">Proyectos Molones</p> */}

@@ -1,11 +1,11 @@
 const FieldsetAuthor = ({ data, handleInput }) => {
   return (
-    <fieldset className="autor">
-      <legend className="ask-info">
-        <p className="subtitle">Cuéntanos sobre la autora</p>
-        <hr className="line" />
+    <fieldset className="autor-fieldset">
+      <legend className="legend">
+        <p className="legend-text">Cuéntanos sobre la autora</p>
+        <hr className="legend-line" />
       </legend>
-      <label className="label-form">
+      <label className="form-label">
         {' '}
         Nombre:
         <input
@@ -19,7 +19,7 @@ const FieldsetAuthor = ({ data, handleInput }) => {
           onInput={handleInput}
         />
       </label>
-      <label className="label-form">
+      <label className="form-label">
         Trabajo:
         <input
           className="input"

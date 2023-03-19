@@ -21,7 +21,7 @@ const Form = ({
 
   return (
     <section className="form">
-      <h2 className="title">Información</h2>
+      <h2 className="form-title">Información</h2>
       <form onSubmit={handleSubmit}>
         <FieldsetProject
           data={data}

@@ -1,7 +1,7 @@
 const MessageURL = ({ isCreatedCard, isCompletedForm, infoURL }) => {
   return (
-    <section className={`card ${isCreatedCard ? '' : 'hidden'}`}>
-      <span className="create">
+    <section className={`message-create-card ${isCreatedCard ? '' : 'hidden'}`}>
+      <span className="info-create">
         {isCompletedForm
           ? 'La tarjeta ha sido creada:'
           : 'Faltan campos por rellenar'}

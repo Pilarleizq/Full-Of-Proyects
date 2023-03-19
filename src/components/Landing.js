@@ -9,25 +9,27 @@ const Landing = () => {
   const renderCard = () => {
     return dataCardLS.map((obj) => {
       return (
-        <li className="preview">
-          <section className="autor">
-            <section className="info-project">
-              <p className="subtitle">Personal Project Card</p>
-              <hr className="line" />
+        <li className="landing-card">
+          <section className="project-info">
+            <p className="project-subtitle">Personal Project Card</p>
+            <hr className="landing-card-line" />
 
-              <h2 className="title">{obj.name}</h2>
-              <p className="slogan">{obj.slogan}</p>
-              <p className="desc">{obj.desc}</p>
-              <section className="technologies">
-                <p className="text">{obj.technologies}</p>
-              </section>
+            <h2 className="project-title">{obj.name}</h2>
+            <p className="project-slogan">{obj.slogan}</p>
+            <p className="project-desc">{obj.desc}</p>
+            <section className="project-technologies">
+              <p className="text">{obj.technologies}</p>
             </section>
+          </section>
 
-            <section className="info-autor">
-              <img className="image" src={obj.photo} alt="Foto de la autora" />
-              <p className="job">{obj.job}</p>
-              <p className="name">{obj.autor}</p>
-            </section>
+          <section className="autor-info">
+            <img
+              className="autor-image"
+              src={obj.photo}
+              alt="Foto de la autora"
+            />
+            <p className="autor-job">{obj.job}</p>
+            <p className="autor-name">{obj.autor}</p>
           </section>
         </li>
       );
@@ -38,10 +40,12 @@ const Landing = () => {
     <div className="container">
       <Header logo={logo} linkTo={''} />
       <main>
-        <Link className="link text-landing" to="/create">
-          Crea tu tarjeta de proyecto
-        </Link>
-        <section>{renderCard()}</section>
+        <section>
+          <Link className="link landing-btn-create" to="/create">
+            Crea tu tarjeta de proyecto
+          </Link>
+        </section>
+        <ul className="landing-ul">{renderCard()}</ul>
       </main>
     </div>
   );
