@@ -7,7 +7,7 @@
 }
 
 .container {
-    background-color: #302c42;
+    background-color: #edb3d7;
     min-height: 100vh;
     padding: 20px 30px 30px 30px;
 
@@ -19,6 +19,7 @@
 }
 
 .header {
+    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -29,7 +30,7 @@
     }
 
     &-title {
-        color: white;
+        color: rgb(0, 0, 0);
         font-size: 34px;
         font-family: 'Lobster', cursive;
 
@@ -40,7 +41,16 @@
 }
 
 .logo {
-    width: 150px;
+    width: 125px;
+}
+
+.logo-fop {
+    
+    transform: scale(1.5);
+    width: 200px;
+    height: 110px;
+    display: flex;
+
 }
 
 .main {
@@ -210,7 +220,7 @@
 }
 
 .form {
-    background-color: #211e2e;
+    background-color: #304f88;
     padding: 25px 30px;
     margin-top: 10px;
     width: 100%;
@@ -254,6 +264,7 @@
 
     &-text {
         padding-bottom: 10px;
+        font-family: 'Bitter', serif;
     }
 
     &-line {
@@ -300,20 +311,26 @@
     align-items: center;
     justify-content: space-around;
     text-align: center;
+    
 }
 
 .btn,
 .btn-large {
-    padding: 5px 15px 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 15px 15px 15px;
     width: 160px;
     margin: 5px;
-    color: white;
+    color: rgb(45, 87, 134);
     text-align: center;
     border: none;
-    box-shadow: 10px 5px 5px black;
+    box-shadow: 5px 5px 5px 0.9px rgb(21, 23, 66);
     height: 43px;
-    background: linear-gradient(90deg, #8176af -1.57%, #c0b7e8 98.43%);
+    background: linear-gradient(90deg, #f2b9ec -1.57%, #eba6ec 98.43%);
     border-radius: 40px;
+    border: solid 2px rgb(244, 203, 244);
+    
 
     @media all and (min-width: 768px) {
         padding: 5px 10px 0 10px;
@@ -322,15 +339,18 @@
 
 .label {
     font-size: 15px;
+    font-family: 'Bitter', serif;
+    font-weight: bolder;
+    
 }
 
 .btn-large {
     width: 200px;
-    border: solid 2px white;
-    box-shadow: 2px 5px 2px rgb(0, 0, 0);
+    box-shadow: 2px 5px 5px 0.9px rgb(21, 23, 66);
     font-family: 'Bitter', serif;
     font-weight: bolder;
-    font-size: 15px;
+    font-size: 18px;
+    
 }
 
 .message-create-card {

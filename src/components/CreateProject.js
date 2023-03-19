@@ -1,3 +1,4 @@
+import logoFop from '../images/logo-fop.png';
 import logo from '../images/logo-adalab.png';
 import { useEffect, useState } from 'react';
 import dataApi from '../service/api';
@@ -96,7 +97,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
 
   return (
     <div className="container">
-      <Header logo={logo} linkTo={'/'}></Header>
+      <Header logoFop={logoFop} logo={logo} linkTo={'/'}></Header>
       <main className="main">
         <Preview data={data}></Preview>
         <Form
