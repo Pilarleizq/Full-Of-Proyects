@@ -6,7 +6,12 @@ const MessageURL = ({ isCreatedCard, isCompletedForm, infoURL }) => {
           ? 'La tarjeta ha sido creada:'
           : 'Faltan campos por rellenar'}
       </span>
-      <a href={infoURL} className="url" target="blank" rel="noreferrer">
+      <a
+        href={infoURL}
+        className={`url ${isCreatedCard ? '' : 'hidden'}`}
+        target="blank"
+        rel="noreferrer"
+      >
         {infoURL}
       </a>
     </section>

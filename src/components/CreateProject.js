@@ -5,6 +5,8 @@ import ls from '../service/localStorage';
 import Header from './Header';
 import Preview from './Preview/Preview';
 import Form from './Form/Form';
+import user from '../images/user.jpeg';
+import cover from '../images/cover.jpeg';
 
 function CreateProject({ dataCardList, setDataCardList }) {
   const [message, setMessage] = useState('');
@@ -31,8 +33,8 @@ function CreateProject({ dataCardList, setDataCardList }) {
     desc: '',
     autor: '',
     job: '',
-    image: '',
-    photo: '',
+    image: cover,
+    photo: user,
   };
 
   const [data, setData] = useState(ls.get('dataLS', defaultData));
@@ -65,6 +67,8 @@ function CreateProject({ dataCardList, setDataCardList }) {
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
+    setIsCreatedCard(false);
+    setinfoURL('');
     if (inputName === 'repo' || inputName === 'demo') {
       if (pattern.test(inputValue)) {
         setData({ ...data, [inputName]: inputValue });
@@ -84,12 +88,12 @@ function CreateProject({ dataCardList, setDataCardList }) {
         setCompletedForm(true);
         setIsCreatedCard(true);
         setinfoURL(info.cardURL);
-      } else {
-        setIsCreatedCard(true);
-        setCompletedForm(false);
         dataCardList.unshift(data);
         setDataCardList([...dataCardList]);
         setData(defaultData);
+      } else {
+        setIsCreatedCard(true);
+        setCompletedForm(false);
       }
     });
   };
@@ -97,6 +101,8 @@ function CreateProject({ dataCardList, setDataCardList }) {
   const handleResetInput = () => {
     ls.remove('dataLS');
     setData(defaultData);
+    setIsCreatedCard(false);
+    setinfoURL('');
   };
 
   return (

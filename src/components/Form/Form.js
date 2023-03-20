@@ -29,7 +29,7 @@ const Form = ({
         title="Borrar los campos"
         onClick={handleResetInput}
       >
-        <i class="fa-solid fa-trash"></i>
+        <i className="fa-solid fa-trash"></i>
       </button>
       <form onSubmit={handleSubmit}>
         <FieldsetProject
