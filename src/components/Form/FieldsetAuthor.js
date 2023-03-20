@@ -1,4 +1,4 @@
-const FieldsetAuthor = ({ data, handleInput }) => {
+const FieldsetAuthor = ({ data, handleInput, message, messageErrorClass }) => {
   return (
     <fieldset className="autor-fieldset">
       <legend className="legend">
@@ -6,19 +6,21 @@ const FieldsetAuthor = ({ data, handleInput }) => {
         <hr className="legend-line" />
       </legend>
       <label className="form-label">
-        {' '}
+        {" "}
         Nombre:
         <input
           className="input"
           type="text"
           placeholder="Nombre"
           name="autor"
-          id="autor"
+          id="tu nombre personal"
           required
           value={data.autor}
           onInput={handleInput}
         />
       </label>
+      <small className={`error-message ${messageErrorClass.autor}`}>{message.autor}</small>
+
       <label className="form-label">
         Trabajo:
         <input
@@ -26,12 +28,13 @@ const FieldsetAuthor = ({ data, handleInput }) => {
           type="text"
           placeholder="Trabajo"
           name="job"
-          id="job"
+          id="tu profesión"
           required
           value={data.job}
           onInput={handleInput}
         />
       </label>
+      <small className={`error-message ${messageErrorClass.job}`}>{message.job}</small>
     </fieldset>
   );
 };

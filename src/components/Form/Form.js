@@ -7,6 +7,7 @@ import MessageURL from './MessageURL';
 const Form = ({
   data,
   message,
+  messageErrorClass,
   infoURL,
   isCreatedCard,
   isCompletedForm,
@@ -36,8 +37,9 @@ const Form = ({
           data={data}
           handleInput={handleInput}
           message={message}
+          messageErrorClass={messageErrorClass}
         ></FieldsetProject>
-        <FieldsetAuthor data={data} handleInput={handleInput}></FieldsetAuthor>
+        <FieldsetAuthor data={data} handleInput={handleInput} message={message} messageErrorClass={messageErrorClass}></FieldsetAuthor>
 
         <section className="buttons-img">
           <GetAvatar

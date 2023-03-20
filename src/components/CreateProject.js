@@ -9,20 +9,8 @@ import user from '../images/user.jpeg';
 import cover from '../images/cover.jpeg';
 
 function CreateProject({ dataCardList, setDataCardList }) {
-  const [message, setMessage] = useState('');
-
-  // const [data, setData] = useState({
-  //   name: ls.get('dataLS', {}).name || '',
-  //   slogan: ls.get('dataLS', {}).slogan || '',
-  //   technologies: ls.get('dataLS', {}).technologies || '',
-  //   repo: ls.get('dataLS', {}).repo || '',
-  //   demo: ls.get('dataLS', {}).demo || '',
-  //   desc: ls.get('dataLS', {}).desc || '',
-  //   autor: ls.get('dataLS', {}).autor || '',
-  //   job: ls.get('dataLS', {}).job || '',
-  //   image: ls.get('dataLS', {}).image || '',
-  //   photo: ls.get('dataLS', {}).photo || '',
-  // });
+  const [message, setMessage] = useState({});
+  const [messageErrorClass, setMessageErrorClass] = useState({});
 
   const defaultData = {
     name: '',
@@ -37,9 +25,9 @@ function CreateProject({ dataCardList, setDataCardList }) {
     photo: user,
   };
 
-  const [data, setData] = useState(ls.get('dataLS', defaultData));
+  const [data, setData] = useState(ls.get("dataLS", defaultData));
 
-  const [infoURL, setinfoURL] = useState('');
+  const [infoURL, setinfoURL] = useState("");
 
   const [isCreatedCard, setIsCreatedCard] = useState(false);
 
@@ -48,11 +36,11 @@ function CreateProject({ dataCardList, setDataCardList }) {
   // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
 
   useEffect(() => {
-    ls.set('dataLS', data);
+    ls.set("dataLS", data);
   }, [data]);
 
   useEffect(() => {
-    ls.set('dataCardLS', dataCardList);
+    ls.set("dataCardLS", dataCardList);
   }, [dataCardList]);
 
   const updateImages = (avatar) => {
@@ -66,21 +54,39 @@ function CreateProject({ dataCardList, setDataCardList }) {
     setinfoURL('');
   };
 
-  const pattern = new RegExp('^https?://[/#?]?.*$');
+  const pattern = new RegExp("^https?://[/#?]?.*$");
 
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
+    const inputId = ev.target.id;
     setIsCreatedCard(false);
     setinfoURL('');
-    if (inputName === 'repo' || inputName === 'demo') {
+    if (inputName === "repo" || inputName === "demo") {
       if (pattern.test(inputValue)) {
         setData({ ...data, [inputName]: inputValue });
+        setMessageErrorClass({ ...messageErrorClass, [inputName]: "" });
       } else {
-        setMessage('Introduce un URL válida');
+        setMessage({ ...message, [inputName]: "Introduce una URL válida" });
+        setMessageErrorClass({
+          ...messageErrorClass,
+          [inputName]: "error-message-display",
+        });
       }
     } else {
-      setData({ ...data, [inputName]: inputValue });
+      if (!inputValue) {
+        setMessage({
+          ...message,
+          [inputName]: `Rellena este campo con ${inputId}`,
+        });
+        setMessageErrorClass({
+          ...messageErrorClass,
+          [inputName]: "error-message-display",
+        });
+      } else {
+        setData({ ...data, [inputName]: inputValue });
+        setMessageErrorClass({ ...messageErrorClass, [inputName]: "" });
+      }
     }
   };
 
@@ -103,8 +109,9 @@ function CreateProject({ dataCardList, setDataCardList }) {
   };
 
   const handleResetInput = () => {
-    ls.remove('dataLS');
+    ls.remove("dataLS");
     setData(defaultData);
+    setMessageErrorClass('');
     setIsCreatedCard(false);
     setinfoURL('');
   };
@@ -113,13 +120,14 @@ function CreateProject({ dataCardList, setDataCardList }) {
     <div className="container">
       <Header
         logo={logo}
-        linkTo={'/'}
+        linkTo={"/"}
         title="Volver a la página principal"
       ></Header>
       <main className="main">
         <Preview data={data}></Preview>
         <Form
           message={message}
+          messageErrorClass={messageErrorClass}
           data={data}
           infoURL={infoURL}
           isCreatedCard={isCreatedCard}
