@@ -7,7 +7,7 @@ import Header from './Header';
 import Preview from './Preview/Preview';
 import Form from './Form/Form';
 import user from '../images/user.jpeg';
-import cover from '../images/cover.jpeg';
+import cover from '../../images/preview.jpg';
 
 function CreateProject({ dataCardList, setDataCardList }) {
   const [message, setMessage] = useState({});
