@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import logo from '../images/logo-adalab.png';
+import logoFop from '../images/logo-fop.png';
 import ls from '../service/localStorage';
 import '../styles/App.scss';
 
@@ -59,7 +60,7 @@ const Landing = ({ setDataCardList }) => {
 
   return (
     <div className="container">
-      <Header logo={logo} linkTo={''} />
+      <Header logoFop={logoFop} logo={logo} linkTo={''} />
       <main>
         <h1 className="landing-title">Proyectos Molones</h1>
         <h2 className="landing-subtitle">

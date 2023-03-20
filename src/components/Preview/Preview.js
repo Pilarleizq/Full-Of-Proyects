@@ -1,5 +1,5 @@
-import Profile from './Profile';
-// import cover from '../../images/cover.jpeg';
+import Profile from './Profile.js';
+// import cover from '../../images/preview.jpg';
 import Card from './Card';
 
 const Preview = ({ data }) => {

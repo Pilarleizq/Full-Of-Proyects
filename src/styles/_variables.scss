@@ -6,8 +6,21 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.landing-btn-create {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-family: 'Bitter', serif;
+    font-weight: bolder;
+    background-color: #415986;
+    opacity: 70%;
+    box-shadow: 2px 5px 5px 0.9px rgb(21, 23, 66);
+
+}
+
 .container {
-    background-color: #302c42;
+    background-color: #edb3d7;
     min-height: 100vh;
     padding: 20px 30px 30px 30px;
 
@@ -19,28 +32,50 @@
 }
 
 .header {
+    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
     @media all and (min-width: 768px) {
+        height: 100px;
         padding: 0 20px;
+        padding-bottom: 10px;
     }
 
-    &-title {
-        color: white;
-        font-size: 34px;
-        font-family: 'Lobster', cursive;
+    // &-title {
+    //     color: rgb(0, 0, 0);
+    //     font-size: 34px;
+    //     font-family: 'Lobster', cursive;
 
-        @media all and (min-width: 768px) {
-            font-size: 30px;
-        }
-    }
+    //     @media all and (min-width: 768px) {
+    //         font-size: 30px;
+    //     }
+    // }
 }
 
 .logo {
-    width: 150px;
+    width: 100px;
+    margin-bottom: 90px;
+
+    @media all and (min-width: 768px) {
+        margin-top: 60px;
+        margin-bottom: 90px;
+        
+        
+    }
+}
+
+.logo-fop {
+    
+    transform: scale(1.5);
+    width: 200px;
+    height: 110px;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 200px;
+
 }
 
 .main {
@@ -69,9 +104,12 @@
         width: 100%;
         min-height: 50%;
         max-height: 700px;
+        margin-bottom: 20px;
+        border-radius: 20px;
 
         @media all and (min-width: 768px) {
             max-width: 100%;
+            margin-top: 30px;
 
         }
     }
@@ -91,6 +129,7 @@
     padding: 10px;
     min-height: 245px;
     max-height: 350px;
+    
 
     @media all and (min-width: 768px) {
         transform: translateY(-100px);
@@ -113,6 +152,7 @@
     }
 }
 
+
 .autor {
     &-info {
         width: 40%;
@@ -124,9 +164,10 @@
         object-fit: cover;
         border-radius: 5%;
         min-width: 120px;
-        width: 85%;
-        height: 85%;
+        width: 70%;
+        height: 70%;
         margin: auto;
+        padding-bottom: 10px;
 
         @media all and (min-width: 768px) {
             width: 85%;
@@ -204,14 +245,19 @@
         width: 70%;
 
         .text {
-            font-size: 15px
+            font-size: 15px;
+            font-family: 'Bitter', serif;
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
         }
     }
 }
 
 .form {
-    background-color: #211e2e;
-    padding: 25px 30px;
+    background-color: #304f88;
+    border-radius: 20px;
+    padding: 35px 30px;
     margin-top: 10px;
     width: 100%;
     position: relative;
@@ -255,6 +301,7 @@
 
     &-text {
         padding-bottom: 10px;
+        font-family: 'Bitter', serif;
     }
 
     &-line {
@@ -306,6 +353,7 @@
     align-items: center;
     justify-content: space-around;
     text-align: center;
+    
 }
 
 .btn,
@@ -313,16 +361,21 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15px 15px 15px 15px;
     width: 160px;
     height: 50px;
     margin: 5px;
-    color: white;
+    margin-top: 20px;
+    color: rgb(45, 87, 134);
     text-align: center;
     border: none;
-    box-shadow: 10px 5px 5px black;
-    background: linear-gradient(90deg, #8176af -1.57%, #c0b7e8 98.43%);
+    box-shadow: 5px 5px 5px 0.9px rgb(21, 23, 66);
+    height: 43px;
+    background: linear-gradient(90deg, #f2b9ec -1.57%, #eba6ec 98.43%);
     border-radius: 40px;
+    border: solid 2px rgb(244, 203, 244);
     cursor: pointer;
+    
 
     @media all and (min-width: 768px) {
         
@@ -331,15 +384,21 @@
 
 .btn-label {
     font-size: 15px;
-    cursor: pointer;
+    font-family: 'Bitter', serif;
+    font-weight: bolder;
+    cursor:pointer;
+    
 }
 
 .btn-large {
     width: 200px;
-    border: solid 2px white;
-    box-shadow: 2px 5px 2px rgb(0, 0, 0);
+    box-shadow: 2px 5px 5px 0.9px rgb(21, 23, 66);
+    font-family: 'Bitter', serif;
     font-weight: bolder;
-    font-size: 15px;
+    font-size: 18px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    
 }
 
 .btn-reset-inputs{

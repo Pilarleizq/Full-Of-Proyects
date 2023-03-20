@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Profile({ avatar, defaultAvatar, className }) {
+function Profile({ avatar, className }) {
   // const avatarImg = avatar === '' ? defaultAvatar : avatar;
   return <img className={className} src={avatar} alt="" />;
 }

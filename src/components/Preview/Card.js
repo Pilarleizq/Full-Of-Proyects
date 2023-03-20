@@ -1,21 +1,21 @@
-import user from '../../images/user.jpeg';
+import user from '../../images/icono.png';
 import Profile from './Profile';
 
 const Card = ({ data }) => {
   return (
     <section className="card">
       <section className="project-info">
-        <p className="project-subtitle">Personal Project Card</p>
+        <p className="project-subtitle">Tarjeta sobre el proyecto</p>
         <hr className="card-line" />
 
-        <h2 className="project-title">{data.name || 'Elegant Workspace'}</h2>
+        <h2 className="project-title">{data.name || 'Mi proyecto'}</h2>
         <p className="project-slogan">{data.slogan || 'Diseños Exclusivos'}</p>
         <p className="project-desc">
           {data.desc ||
-            `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-      Libero, delectus? Voluptates at hic aliquam porro ad suscipit
-      harum laboriosam saepe earum doloribus aperiam, ullam culpa
-      accusantium placeat odit corrupti ipsum!`}
+          `En este espacio proporcionaremos la información sobre nuestro proyecto
+           que consideremos importante y/o relevante. Te aconsejamos ser breve y concisa, 
+           será más sencillo para los demás usuarios que vean tu tarjeta!`
+            }
         </p>
         <section className="tech-icons">
           <section className="project-technologies">
@@ -42,7 +42,7 @@ const Card = ({ data }) => {
           className={'autor-image'}
         />
         <p className="autor-job">{data.job || 'Full Stack Developer'}</p>
-        <p className="autor-name">{data.autor || 'Emmelie Björklund'}</p>
+        <p className="autor-name">{data.autor || 'Tu nombre'}</p>
       </section>
     </section>
   );
