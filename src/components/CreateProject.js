@@ -10,19 +10,6 @@ function CreateProject({ dataCardList, setDataCardList }) {
   const [message, setMessage] = useState({});
   const [messageErrorClass, setMessageErrorClass] = useState({});
 
-  // const [data, setData] = useState({
-  //   name: ls.get('dataLS', {}).name || '',
-  //   slogan: ls.get('dataLS', {}).slogan || '',
-  //   technologies: ls.get('dataLS', {}).technologies || '',
-  //   repo: ls.get('dataLS', {}).repo || '',
-  //   demo: ls.get('dataLS', {}).demo || '',
-  //   desc: ls.get('dataLS', {}).desc || '',
-  //   autor: ls.get('dataLS', {}).autor || '',
-  //   job: ls.get('dataLS', {}).job || '',
-  //   image: ls.get('dataLS', {}).image || '',
-  //   photo: ls.get('dataLS', {}).photo || '',
-  // });
-
   const defaultData = {
     name: "",
     slogan: "",
@@ -70,10 +57,6 @@ function CreateProject({ dataCardList, setDataCardList }) {
     if (inputName === "repo" || inputName === "demo") {
       if (pattern.test(inputValue)) {
         setData({ ...data, [inputName]: inputValue });
-        setMessage({
-          ...message,
-          [inputName]: "",
-        });
         setMessageErrorClass({ ...messageErrorClass, [inputName]: "" });
       } else {
         setMessage({ ...message, [inputName]: "Introduce una URL válida" });
@@ -92,12 +75,8 @@ function CreateProject({ dataCardList, setDataCardList }) {
           ...messageErrorClass,
           [inputName]: "error-message-display",
         });
-      } else if (inputValue.length > 0) {
+      } else {
         setData({ ...data, [inputName]: inputValue });
-        setMessage({
-          ...message,
-          [inputName]: "",
-        });
         setMessageErrorClass({ ...messageErrorClass, [inputName]: "" });
       }
     }
@@ -124,6 +103,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
   const handleResetInput = () => {
     ls.remove("dataLS");
     setData(defaultData);
+    setMessageErrorClass('');
   };
 
   return (
