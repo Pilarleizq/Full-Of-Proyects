@@ -3,7 +3,7 @@
 With this app you will be able to upload your personal projects as well as other projects that you like.  By introducing the details and pictures into the app, it will return a beautiful card with the details that you have submitted.
 
 ## Built with 
-* [![React][React.js]][React-url]
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 
