@@ -7,6 +7,7 @@ import MessageURL from './MessageURL';
 const Form = ({
   data,
   message,
+  messageErrorClass,
   infoURL,
   isCreatedCard,
   isCompletedForm,
@@ -29,15 +30,16 @@ const Form = ({
         title="Borrar los campos"
         onClick={handleResetInput}
       >
-        <i class="fa-solid fa-trash"></i>
+        <i className="fa-solid fa-trash"></i>
       </button>
       <form onSubmit={handleSubmit}>
         <FieldsetProject
           data={data}
           handleInput={handleInput}
           message={message}
+          messageErrorClass={messageErrorClass}
         ></FieldsetProject>
-        <FieldsetAuthor data={data} handleInput={handleInput}></FieldsetAuthor>
+        <FieldsetAuthor data={data} handleInput={handleInput} message={message} messageErrorClass={messageErrorClass}></FieldsetAuthor>
 
         <section className="buttons-img">
           <GetAvatar

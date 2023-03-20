@@ -1,13 +1,14 @@
-import logo from '../images/logo-adalab.png';
-import { useEffect, useState } from 'react';
-import dataApi from '../service/api';
-import ls from '../service/localStorage';
-import Header from './Header';
-import Preview from './Preview/Preview';
-import Form from './Form/Form';
+import logo from "../images/logo-adalab.png";
+import { useEffect, useState } from "react";
+import dataApi from "../service/api";
+import ls from "../service/localStorage";
+import Header from "./Header";
+import Preview from "./Preview/Preview";
+import Form from "./Form/Form";
 
 function CreateProject({ dataCardList, setDataCardList }) {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState({});
+  const [messageErrorClass, setMessageErrorClass] = useState({});
 
   // const [data, setData] = useState({
   //   name: ls.get('dataLS', {}).name || '',
@@ -23,21 +24,21 @@ function CreateProject({ dataCardList, setDataCardList }) {
   // });
 
   const defaultData = {
-    name: '',
-    slogan: '',
-    technologies: '',
-    repo: '',
-    demo: '',
-    desc: '',
-    autor: '',
-    job: '',
-    image: '',
-    photo: '',
+    name: "",
+    slogan: "",
+    technologies: "",
+    repo: "",
+    demo: "",
+    desc: "",
+    autor: "",
+    job: "",
+    image: "",
+    photo: "",
   };
 
-  const [data, setData] = useState(ls.get('dataLS', defaultData));
+  const [data, setData] = useState(ls.get("dataLS", defaultData));
 
-  const [infoURL, setinfoURL] = useState('');
+  const [infoURL, setinfoURL] = useState("");
 
   const [isCreatedCard, setIsCreatedCard] = useState(false);
 
@@ -46,11 +47,11 @@ function CreateProject({ dataCardList, setDataCardList }) {
   // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
 
   useEffect(() => {
-    ls.set('dataLS', data);
+    ls.set("dataLS", data);
   }, [data]);
 
   useEffect(() => {
-    ls.set('dataCardLS', dataCardList);
+    ls.set("dataCardLS", dataCardList);
   }, [dataCardList]);
 
   const updateImages = (avatar) => {
@@ -60,19 +61,45 @@ function CreateProject({ dataCardList, setDataCardList }) {
     setData({ ...data, photo: avatar });
   };
 
-  const pattern = new RegExp('^https?://[/#?]?.*$');
+  const pattern = new RegExp("^https?://[/#?]?.*$");
 
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
     const inputName = ev.target.name;
-    if (inputName === 'repo' || inputName === 'demo') {
+    const inputId = ev.target.id;
+    if (inputName === "repo" || inputName === "demo") {
       if (pattern.test(inputValue)) {
         setData({ ...data, [inputName]: inputValue });
+        setMessage({
+          ...message,
+          [inputName]: "",
+        });
+        setMessageErrorClass({ ...messageErrorClass, [inputName]: "" });
       } else {
-        setMessage('Introduce un URL válida');
+        setMessage({ ...message, [inputName]: "Introduce una URL válida" });
+        setMessageErrorClass({
+          ...messageErrorClass,
+          [inputName]: "error-message-display",
+        });
       }
     } else {
-      setData({ ...data, [inputName]: inputValue });
+      if (!inputValue) {
+        setMessage({
+          ...message,
+          [inputName]: `Rellena este campo con ${inputId}`,
+        });
+        setMessageErrorClass({
+          ...messageErrorClass,
+          [inputName]: "error-message-display",
+        });
+      } else if (inputValue.length > 0) {
+        setData({ ...data, [inputName]: inputValue });
+        setMessage({
+          ...message,
+          [inputName]: "",
+        });
+        setMessageErrorClass({ ...messageErrorClass, [inputName]: "" });
+      }
     }
   };
 
@@ -95,7 +122,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
   };
 
   const handleResetInput = () => {
-    ls.remove('dataLS');
+    ls.remove("dataLS");
     setData(defaultData);
   };
 
@@ -103,13 +130,14 @@ function CreateProject({ dataCardList, setDataCardList }) {
     <div className="container">
       <Header
         logo={logo}
-        linkTo={'/'}
+        linkTo={"/"}
         title="Volver a la página principal"
       ></Header>
       <main className="main">
         <Preview data={data}></Preview>
         <Form
           message={message}
+          messageErrorClass={messageErrorClass}
           data={data}
           infoURL={infoURL}
           isCreatedCard={isCreatedCard}
