@@ -94,9 +94,18 @@ function CreateProject({ dataCardList, setDataCardList }) {
     });
   };
 
+  const handleResetInput = () => {
+    ls.remove('dataLS');
+    setData(defaultData);
+  };
+
   return (
     <div className="container">
-      <Header logo={logo} linkTo={'/'}></Header>
+      <Header
+        logo={logo}
+        linkTo={'/'}
+        title="Volver a la página principal"
+      ></Header>
       <main className="main">
         <Preview data={data}></Preview>
         <Form
@@ -109,6 +118,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
           updatePhoto={updatePhoto}
           handleInput={handleInput}
           handleClickCreateCard={handleClickCreateCard}
+          handleResetInput={handleResetInput}
         ></Form>
       </main>
     </div>

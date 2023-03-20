@@ -14,6 +14,7 @@ const Form = ({
   updatePhoto,
   handleInput,
   handleClickCreateCard,
+  handleResetInput,
 }) => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -22,6 +23,14 @@ const Form = ({
   return (
     <section className="form">
       <h2 className="form-title">Información</h2>
+      <button
+        className="btn-reset-inputs"
+        type="reset"
+        title="Borrar los campos"
+        onClick={handleResetInput}
+      >
+        <i class="fa-solid fa-trash"></i>
+      </button>
       <form onSubmit={handleSubmit}>
         <FieldsetProject
           data={data}

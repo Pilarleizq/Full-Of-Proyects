@@ -17,8 +17,21 @@ const Card = ({ data }) => {
       harum laboriosam saepe earum doloribus aperiam, ullam culpa
       accusantium placeat odit corrupti ipsum!`}
         </p>
-        <section className="project-technologies">
-          <p className="text">{data.technologies || 'React JS, MongoDB'}</p>
+        <section className="tech-icons">
+          <section className="project-technologies">
+            <p className="text">{data.technologies || 'React JS, MongoDB'}</p>
+          </section>
+          <section>
+            <a href={data.demo} target="blank">
+              <i className="fa-solid fa-globe icons" title="Link a demo"></i>
+            </a>
+            <a href={data.repo} target="blank">
+              <i
+                className="fa-brands fa-github icons"
+                title="Link a repositorio"
+              ></i>
+            </a>
+          </section>
         </section>
       </section>
 

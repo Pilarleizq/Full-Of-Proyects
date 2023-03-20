@@ -4,7 +4,7 @@ import logo from '../images/logo-adalab.png';
 import ls from '../service/localStorage';
 import '../styles/App.scss';
 
-const Landing = () => {
+const Landing = ({ setDataCardList }) => {
   const dataCardLS = ls.get('dataCardLS', []);
   const renderCard = () => {
     return dataCardLS.map((obj, index) => {
@@ -17,8 +17,24 @@ const Landing = () => {
             <h2 className="project-title">{obj.name}</h2>
             <p className="project-slogan">{obj.slogan}</p>
             <p className="project-desc">{obj.desc}</p>
-            <section className="project-technologies">
-              <p className="text">{obj.technologies}</p>
+            <section className="tech-icons">
+              <section className="project-technologies">
+                <p className="text">{obj.technologies}</p>
+              </section>
+              <section>
+                <a href={obj.demo} target="blank">
+                  <i
+                    className="fa-solid fa-globe icons"
+                    title="Link a demo"
+                  ></i>
+                </a>
+                <a href={obj.repo} target="blank">
+                  <i
+                    className="fa-brands fa-github icons"
+                    title="Link a repositorio"
+                  ></i>
+                </a>
+              </section>
             </section>
           </section>
 
@@ -36,6 +52,11 @@ const Landing = () => {
     });
   };
 
+  const handleResetCards = () => {
+    ls.remove('dataCardLS');
+    setDataCardList([]);
+  };
+
   return (
     <div className="container">
       <Header logo={logo} linkTo={''} />
@@ -44,10 +65,21 @@ const Landing = () => {
         <h2 className="landing-subtitle">
           Escaparate en línea para recoger ideas a través de la tecnología
         </h2>
-        <section className="buttons-img">
-          <Link className="link btn-large" to="/create">
+        <section className="landing-buttons">
+          <Link
+            className="link btn-large"
+            to="/create"
+            title="Crear una nueva tarjeta"
+          >
             Nuevo proyecto
           </Link>
+          <button
+            className="btn-reset-cards"
+            onClick={handleResetCards}
+            title="Borrar las tarjetas"
+          >
+            Borrar todos los proyectos
+          </button>
         </section>
         <ul className="landing-ul">{renderCard()}</ul>
       </main>

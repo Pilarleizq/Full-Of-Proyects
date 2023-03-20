@@ -34,7 +34,7 @@ function GetAvatar(props) {
   // const avatar = props.avatar === '' ? props.defaultAvatar : props.avatar;
   return (
     <div className={props.className}>
-      <label className='label'>
+      <label className="btn-label">
         {props.value}
         <input
           type="file"
