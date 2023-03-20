@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import logo from '../images/logo-adalab.png';
+import logoFop from '../images/logo-fop.png';
 import ls from '../service/localStorage';
 import '../styles/App.scss';
 
@@ -38,7 +39,7 @@ const Landing = () => {
 
   return (
     <div className="container">
-      <Header logo={logo} linkTo={''} />
+      <Header logoFop={logoFop} logo={logo} linkTo={''} />
       <main>
         <section>
           <Link className="link landing-btn-create" to="/create">

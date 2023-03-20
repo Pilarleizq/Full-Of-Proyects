@@ -6,6 +6,19 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.landing-btn-create {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-family: 'Bitter', serif;
+    font-weight: bolder;
+    background-color: #415986;
+    opacity: 70%;
+    box-shadow: 2px 5px 5px 0.9px rgb(21, 23, 66);
+
+}
+
 .container {
     background-color: #edb3d7;
     min-height: 100vh;
@@ -31,19 +44,27 @@
         padding-bottom: 10px;
     }
 
-    &-title {
-        color: rgb(0, 0, 0);
-        font-size: 34px;
-        font-family: 'Lobster', cursive;
+    // &-title {
+    //     color: rgb(0, 0, 0);
+    //     font-size: 34px;
+    //     font-family: 'Lobster', cursive;
 
-        @media all and (min-width: 768px) {
-            font-size: 30px;
-        }
-    }
+    //     @media all and (min-width: 768px) {
+    //         font-size: 30px;
+    //     }
+    // }
 }
 
 .logo {
-    width: 125px;
+    width: 100px;
+    margin-bottom: 90px;
+
+    @media all and (min-width: 768px) {
+        margin-top: 60px;
+        margin-bottom: 90px;
+        
+        
+    }
 }
 
 .logo-fop {
@@ -52,6 +73,8 @@
     width: 200px;
     height: 110px;
     display: flex;
+    margin-top: 20px;
+    margin-left: 200px;
 
 }
 
@@ -81,9 +104,12 @@
         width: 100%;
         min-height: 50%;
         max-height: 700px;
+        margin-bottom: 20px;
+        border-radius: 20px;
 
         @media all and (min-width: 768px) {
             max-width: 100%;
+            margin-top: 30px;
 
         }
     }
@@ -103,7 +129,7 @@
     padding: 10px;
     min-height: 245px;
     max-height: 350px;
-    box-shadow: #3e3e3e;
+    
 
     @media all and (min-width: 768px) {
         transform: translateY(-100px);
@@ -125,6 +151,7 @@
                 rgba(255, 255, 255, 0));
     }
 }
+
 
 .autor {
     &-info {
@@ -218,14 +245,19 @@
         width: 70%;
 
         .text {
-            font-size: 15px
+            font-size: 15px;
+            font-family: 'Bitter', serif;
+            font-weight: bolder;
+            display: flex;
+            justify-content: center;
         }
     }
 }
 
 .form {
     background-color: #304f88;
-    padding: 25px 30px;
+    border-radius: 20px;
+    padding: 35px 30px;
     margin-top: 10px;
     width: 100%;
 
@@ -326,6 +358,7 @@
     padding: 15px 15px 15px 15px;
     width: 160px;
     margin: 5px;
+    margin-top: 20px;
     color: rgb(45, 87, 134);
     text-align: center;
     border: none;
@@ -354,6 +387,8 @@
     font-family: 'Bitter', serif;
     font-weight: bolder;
     font-size: 18px;
+    margin-bottom: 30px;
+    margin-top: 30px;
     
 }
 
