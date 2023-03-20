@@ -57,9 +57,13 @@ function CreateProject({ dataCardList, setDataCardList }) {
 
   const updateImages = (avatar) => {
     setData({ ...data, image: avatar });
+    setIsCreatedCard(false);
+    setinfoURL('');
   };
   const updatePhoto = (avatar) => {
     setData({ ...data, photo: avatar });
+    setIsCreatedCard(false);
+    setinfoURL('');
   };
 
   const pattern = new RegExp('^https?://[/#?]?.*$');

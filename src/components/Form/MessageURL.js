@@ -4,7 +4,7 @@ const MessageURL = ({ isCreatedCard, isCompletedForm, infoURL }) => {
       <span className="info-create">
         {isCompletedForm
           ? 'La tarjeta ha sido creada:'
-          : 'Faltan campos por rellenar'}
+          : 'Faltan campos por rellenar o la imagen es demasiado grande'}
       </span>
       <a
         href={infoURL}
