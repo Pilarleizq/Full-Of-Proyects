@@ -13,8 +13,7 @@ const Card = ({ data }) => {
         <p className="project-desc">
           {data.desc ||
             `En este espacio proporcionaremos la información sobre nuestro proyecto
-           que consideremos importante y/o relevante. Te aconsejamos ser breve y concisa, 
-           será más sencillo para los demás usuarios que vean tu tarjeta!`}
+           que consideremos importante y/o relevante. Te aconsejamos ser breve y concisa, será más sencillo para los demás usuarios que vean tu tarjeta!`}
         </p>
         <section className="tech-icons">
           <section className="project-technologies">
