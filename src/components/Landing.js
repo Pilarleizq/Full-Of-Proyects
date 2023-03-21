@@ -17,7 +17,7 @@ const Landing = ({ setDataCardList }) => {
           <div
             className="landing-card-background"
             style={{
-              backgroundImage: `url(${obj.image})`,
+              backgroundImage: `url(${obj.photo})`,
             }}
           ></div>
           <button className="btn-remove-card" onClick={handleBtnRemoveCard}>
@@ -54,7 +54,7 @@ const Landing = ({ setDataCardList }) => {
           <section className="autor-info">
             <img
               className="autor-image"
-              src={obj.photo}
+              src={obj.image}
               alt="Foto de la autora"
             />
             <p className="autor-job">{obj.job}</p>

@@ -36,7 +36,7 @@ const Card = ({ data }) => {
       <section className="autor-info">
         <Profile
           defaultAvatar={user}
-          avatar={data.photo}
+          avatar={data.image}
           className={'autor-image'}
         />
         <p className="autor-job">{data.job || 'Full Stack Developer'}</p>

@@ -7,7 +7,7 @@ const Preview = ({ data }) => {
     <section className="preview">
       <Profile
         defaultAvatar={cover}
-        avatar={data.image}
+        avatar={data.photo}
         className={'preview-image'}
       />
       <Card data={data}></Card>

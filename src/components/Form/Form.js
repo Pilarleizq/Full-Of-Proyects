@@ -44,12 +44,12 @@ const Form = ({
         <section className="buttons-img">
           <GetAvatar
             className={'btn'}
-            updateAvatar={updatePhoto}
+            updateAvatar={updateImages}
             value={'Subir foto de autora'}
           />
           <GetAvatar
             className={'btn'}
-            updateAvatar={updateImages}
+            updateAvatar={updatePhoto}
             value={'Subir foto de proyecto'}
           />
         </section>
