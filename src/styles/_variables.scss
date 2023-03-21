@@ -44,15 +44,6 @@
         padding-bottom: 10px;
     }
 
-    // &-title {
-    //     color: rgb(0, 0, 0);
-    //     font-size: 34px;
-    //     font-family: 'Lobster', cursive;
-
-    //     @media all and (min-width: 768px) {
-    //         font-size: 30px;
-    //     }
-    // }
 }
 
 .logo {
@@ -398,6 +389,7 @@
     font-size: 18px;
     margin-bottom: 30px;
     margin-top: 30px;
+
     
 }
 
@@ -414,17 +406,20 @@
 
 .btn-reset-cards{
     padding: 5px 15px 5px 15px;
-    margin: 5px;
-    background-color: white;
-    color: #544b7a;
+    margin: 20px;
+    background-color: rgb(235, 126, 160);
+    color: #000000;
     text-align: center;
     border-radius: 40px;
     cursor: pointer;
-    width: 200px;
-    border: solid 3px #544b7a;
-    box-shadow: 2px 5px 2px rgb(0, 0, 0);
+    width: 150px;
+    height: 50px;
+    border:2px solid #eba6ec;
+    box-shadow: 2px 5px 4px  rgb(0, 0, 0);
     font-weight: bolder;
     font-size: 15px;
+    font-family: 'Bitter', serif;
+    
 
     @media all and (min-width: 768px) {
         padding: 5px 10px 5px 10px;
@@ -465,25 +460,48 @@
 }
 
 .landing {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     &-buttons{
         display: flex;
+        flex-direction: row;
         justify-content: center;
-        gap:20px;
-        margin:20px;
+        align-items: center;
+
     }
 
     &-title {
         color: #ffffff;
-        text-align: center;
-        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px;
+        font-family: 'Bitter', serif;
+        font-weight: bolder;
+        background-color: #415986;
+        opacity: 80%;
+        border-radius: 20px;
+        height: 60px;   
+        box-shadow: 2px 5px 4px  rgb(0, 0, 0);   
 
     }
 
     &-subtitle {
         color: #ffffff;
+        display: flex;
+        justify-content: center;
         text-align: center;
+        align-items: center;
         font-size: 18px;
         font-weight: lighter;
+        font-family: 'Bitter', serif;
+        color: #415986;
+        border-bottom: 1px solid #415986;
+        
     }
 
     &-ul {

@@ -79,7 +79,7 @@ const Landing = ({ setDataCardList }) => {
             onClick={handleResetCards}
             title="Borrar las tarjetas"
           >
-            Borrar todos los proyectos
+            Borrar proyectos
           </button>
         </section>
         <ul className="landing-ul">{renderCard()}</ul>

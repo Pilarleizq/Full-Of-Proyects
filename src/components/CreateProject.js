@@ -6,8 +6,6 @@ import ls from '../service/localStorage';
 import Header from './Header';
 import Preview from './Preview/Preview';
 import Form from './Form/Form';
-import user from '../images/user.jpeg';
-import cover from '../../images/preview.jpg';
 
 function CreateProject({ dataCardList, setDataCardList }) {
   const [message, setMessage] = useState({});
@@ -22,13 +20,13 @@ function CreateProject({ dataCardList, setDataCardList }) {
     desc: '',
     autor: '',
     job: '',
-    image: cover,
-    photo: user,
+    image: '',
+    photo: '',
   };
 
-  const [data, setData] = useState(ls.get("dataLS", defaultData));
+  const [data, setData] = useState(ls.get('dataLS', defaultData));
 
-  const [infoURL, setinfoURL] = useState("");
+  const [infoURL, setinfoURL] = useState('');
 
   const [isCreatedCard, setIsCreatedCard] = useState(false);
 
@@ -37,11 +35,11 @@ function CreateProject({ dataCardList, setDataCardList }) {
   // expresion regular dayana /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]*$/
 
   useEffect(() => {
-    ls.set("dataLS", data);
+    ls.set('dataLS', data);
   }, [data]);
 
   useEffect(() => {
-    ls.set("dataCardLS", dataCardList);
+    ls.set('dataCardLS', dataCardList);
   }, [dataCardList]);
 
   const updateImages = (avatar) => {
@@ -55,7 +53,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
     setinfoURL('');
   };
 
-  const pattern = new RegExp("^https?://[/#?]?.*$");
+  const pattern = new RegExp('^https?://[/#?]?.*$');
 
   const handleInput = (ev) => {
     const inputValue = ev.target.value;
@@ -63,15 +61,15 @@ function CreateProject({ dataCardList, setDataCardList }) {
     const inputId = ev.target.id;
     setIsCreatedCard(false);
     setinfoURL('');
-    if (inputName === "repo" || inputName === "demo") {
+    if (inputName === 'repo' || inputName === 'demo') {
       if (pattern.test(inputValue)) {
         setData({ ...data, [inputName]: inputValue });
-        setMessageErrorClass({ ...messageErrorClass, [inputName]: "" });
+        setMessageErrorClass({ ...messageErrorClass, [inputName]: '' });
       } else {
-        setMessage({ ...message, [inputName]: "Introduce una URL válida" });
+        setMessage({ ...message, [inputName]: 'Introduce una URL válida' });
         setMessageErrorClass({
           ...messageErrorClass,
-          [inputName]: "error-message-display",
+          [inputName]: 'error-message-display',
         });
       }
     } else {
@@ -82,11 +80,11 @@ function CreateProject({ dataCardList, setDataCardList }) {
         });
         setMessageErrorClass({
           ...messageErrorClass,
-          [inputName]: "error-message-display",
+          [inputName]: 'error-message-display',
         });
       } else {
         setData({ ...data, [inputName]: inputValue });
-        setMessageErrorClass({ ...messageErrorClass, [inputName]: "" });
+        setMessageErrorClass({ ...messageErrorClass, [inputName]: '' });
       }
     }
   };
@@ -110,7 +108,7 @@ function CreateProject({ dataCardList, setDataCardList }) {
   };
 
   const handleResetInput = () => {
-    ls.remove("dataLS");
+    ls.remove('dataLS');
     setData(defaultData);
     setMessageErrorClass('');
     setIsCreatedCard(false);
@@ -120,9 +118,9 @@ function CreateProject({ dataCardList, setDataCardList }) {
   return (
     <div className="container">
       <Header
-        logoFop={logoFop} 
+        logoFop={logoFop}
         logo={logo}
-        linkTo={"/"}
+        linkTo={'/'}
         title="Volver a la página principal"
       ></Header>
       <main className="main">

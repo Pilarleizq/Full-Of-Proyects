@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Profile({ avatar, className }) {
-  // const avatarImg = avatar === '' ? defaultAvatar : avatar;
-  return <img className={className} src={avatar} alt="" />;
+function Profile({ avatar, className, defaultAvatar }) {
+  const avatarImg = avatar === '' ? defaultAvatar : avatar;
+  return <img className={className} src={avatarImg} alt="" />;
 }
 
 Profile.propTypes = {
