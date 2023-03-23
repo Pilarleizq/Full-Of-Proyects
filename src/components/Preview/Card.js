@@ -19,7 +19,7 @@ const Card = ({ data }) => {
           <section className="project-technologies">
             <p className="text">{data.technologies || 'React JS, MongoDB'}</p>
           </section>
-          <section>
+          <section className="section-icons">
             <a href={data.demo} target="blank">
               <i className="fa-solid fa-globe icons" title="Link a demo"></i>
             </a>

@@ -8,7 +8,7 @@ import '../styles/App.scss';
 const Landing = ({ setDataCardList }) => {
   const dataCardLS = ls.get('dataCardLS', []);
 
-  const handleBtnRemoveCard = (ev) => {};
+  //const handleBtnRemoveCard = (ev) => {};
 
   const renderCard = () => {
     return dataCardLS.map((obj, index) => {
@@ -20,9 +20,9 @@ const Landing = ({ setDataCardList }) => {
               backgroundImage: `url(${obj.photo})`,
             }}
           ></div>
-          <button className="btn-remove-card" onClick={handleBtnRemoveCard}>
+          {/* <button className="btn-remove-card" onClick={handleBtnRemoveCard}>
             <i class="fa-sharp fa-solid fa-circle-xmark icons"></i>
-          </button>
+          </button> */}
           <section className="project-info">
             <p className="project-subtitle">Personal Project Card</p>
             <hr className="landing-card-line" />
